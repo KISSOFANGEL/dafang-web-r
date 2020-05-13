@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './app/App';
+import './app/styles/atoms.scss'
+import './app/styles/global.scss'
+import './app/styles/mixin.scss'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
