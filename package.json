@@ -86,6 +86,7 @@
     "babel-loader": "^8.1.0",
     "fibers": "^5.0.0",
     "node-sass": "^4.14.1",
+    "react-router-dom": "^5.2.0",
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.3"
   },

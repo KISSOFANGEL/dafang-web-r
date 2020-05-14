@@ -1,21 +1,28 @@
-.container{
+.wrap-logo{
     width: 100%;
     @include flex(row, center,center);
-}
-.logo{
-    width: 40px;
-    height: 40px;
-}
-.splitor {
-// opacity: 0.5;
-margin: 0  25px;
-height:30px;
-width: 1px;
-background-color: rgba(9, 9, 61, 0.45);
-transform: rotate(30deg);
-}
-.userName{
-    margin-left: 25px;
-    border-bottom: 2px solid #FFDA1A;
-
+    .logo{
+        width: 40px;
+        height: 40px;
+    }
+    .splitor {
+    // opacity: 0.5;
+    margin: 0  25px;
+    height:30px;
+    width: 1px;
+    background-color: rgba(9, 9, 61, 0.45);
+    transform: rotate(30deg);
+    }
+    .userName{
+        margin-left: 25px;
+        // border-bottom: 2px solid #FFDA1A;
+    
+    }
+    .iconheader_flash{
+        margin-left: 54px;
+        background: linear-gradient(191.31deg, #0B0B3D 0.86%, rgba(11, 11, 61, 0.4) 102.4%);
+        -webkit-background-clip:text; 
+        -webkit-text-fill-color:transparent; 
+        transform: rotate(-8deg);;
+    }
 }

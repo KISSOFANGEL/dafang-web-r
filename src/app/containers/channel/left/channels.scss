@@ -1,63 +1,94 @@
-.card{
-    padding: 24px;
-    background-color: $color-bg-gray;
-    border-radius: 32px;
-    width: 188px;
-    margin-bottom: 12px;
-    .title{
-        font-size: 16px;
-        color: $color-gray8;
-        @include flex(row,flex-start,center);
-        .desc{
-            width:130px;
+.wrap-cards{
+    .card{
+        padding: 24px;
+        background-color: $color-bg-gray;
+        border-radius: 32px;
+        box-sizing: border-box;
+        width: 188px;
+        margin-bottom: 12px;
+        .title{
+            font-size: 16px;
+            color: $color-gray8;
+            width: 140px;
+            @include flex(row,space-between,center);
+            .desc{
+                width:124px;
+                line-height: 24px;
+            }
+        
+            .iconfont{
+            color: $color-gray6;
+            font-size: 12px;
+            }
+            .count{
+                font-size: 12px;
+                color: $color-gray6;
+            }  
+            }
+            .creater,.users{
+            @include flex(row,flex-start,center)
         }
-     
-        .iconfont{
-        margin: 0 6px 0 13px;
-        color: $color-gray6;
-        }
-        .count{
+        
+        .creater{
             font-size: 12px;
             color: $color-gray6;
-        }  
+            margin: 8px 0 16px 0;
+            height: 24px;
+            line-height: 24px;
+            .point{
+                margin: -8px 5px 0;
+            }
         }
-         .creater,.users{
-        @include flex(row,flex-start,center)
+        &.add{
+           height: 54px;
+           border: 1px dashed rgba(6, 6, 61, 0.3);
+           height: 104px;
+           @include flex(row,center,center);
+           color: $color-gray6;
+           font-size: 16px;
+            .btn{
+                @include flex(row,center,center);
+                height: 24px;
+                .desc {
+                    margin-left: 8px;
+                    font-size: 16px;
+                    color: $color-gray7;
+                }
+            }
+        }
+
     }
+    .card:not(.active){
+        .desc{
+            @include multiEllipsis(1);
+        }
+        .creater{
+            margin: 8px 0 0;
+        }
+    }
+    .card.active{
+        background-color: $color-white;
+        box-shadow: $shadow-1;
+       
+        .title{
+            .desc{
+                font-weight: 500;
+                color: $color-gray9;
+            }
+          
+            word-wrap: break-word;
+            word-break: break-all;
+            .iconfont{
+                color:$color-gray7;
+                margin-top: -25px;
     
-    .creater{
-        font-size: 12px;
-        color: $color-gray6;
-        margin: 8px 0 16px 0;
-        .point{
-            margin: -8px 5px 0;
+            }
+        }
+        .avatar{
+            width: 28px;
+            height: 28px;
+            border-radius: 12px;
         }
     }
 
-}
-.card:not(.active){
-  .desc{
-      @include multiEllipsis(1);
-  }
-}
-.card.active{
-    background-color: $color-white;
-    box-shadow: $shadow-1;
-    .title{
-        width: 148px;
-        font-weight: 500;
-        color: $color-gray9;
-        word-wrap: break-word;
-        word-break: break-all;
-        
-    }
-   
-    .avatar{
-        width: 28px;
-        height: 28px;
-        border-radius: 12px;
-    }
-}
-.wrap-cards{
-    font-size: 16px;
 }

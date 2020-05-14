@@ -8,9 +8,16 @@ class Channels extends React.Component{
     render(){
         return(
            <div className="wrap-cards">
+               <div className="card add">
+                   <div className="btn">
+                        <div className="iconfont iconaddboard"></div>   
+                        <div className="desc"> 新建频道</div>
+                   </div>
+               </div>
                 <div className="card active">
                     <div className="title">
                         <div className="desc">自在面包纺品牌升级项目</div>
+                        <div className="iconfont iconGroup296"></div>
                     </div>
                     <div className="creater">
                             <div className="username"> Moyan</div>
