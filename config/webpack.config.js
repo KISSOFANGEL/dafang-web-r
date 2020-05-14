@@ -56,7 +56,6 @@ module.exports = function(webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
 
-  
   // Variable used for enabling profiling in Production
   // passed into alias object. Uses a flag if passed into the build command
   const isEnvProductionProfile =
@@ -130,7 +129,6 @@ module.exports = function(webpackEnv) {
   };
 
   return {
-   
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     // Stop compilation early in production
     bail: isEnvProduction,
@@ -294,6 +292,7 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        '@':paths.appSrc,
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
@@ -320,7 +319,9 @@ module.exports = function(webpackEnv) {
         PnpWebpackPlugin.moduleLoader(module),
       ],
     },
+  
     module: {
+      
       strictExportPresence: true,
       rules: [
         // Disable require.ensure as it's not a standard language feature.
@@ -361,32 +362,6 @@ module.exports = function(webpackEnv) {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },
-          //   {
-          //     test: /\.scss$/,
-          //     use: [
-          //         {loader: require.resolve('style-loader')},
-          //         {loader: require.resolve('css-loader')},
-          //         {
-          //         loader: require.resolve('postcss-loader'),
-          //         options: {
-          //             // Necessary for external CSS imports to work
-          //             // https://github.com/facebookincubator/create-react-app/issues/2677
-          //             ident: 'postcss',
-          //             plugins: () => [
-          //             require('postcss-flexbugs-fixes'),
-                    
-          //             ],
-          //         },
-          //         },
-          //         require.resolve('sass-loader'),
-          //         {
-          //             loader: require.resolve('sass-resources-loader'),
-          //             options: {
-          //                 resources: ['./src/style/atoms.scss','./src/style/mixin.scss']
-          //             }
-          //         }
-          //     ],
-          // },
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
@@ -460,6 +435,7 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders({
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
+                modules:true
               }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
@@ -485,21 +461,33 @@ module.exports = function(webpackEnv) {
             {
               test: sassRegex,
               exclude: sassModuleRegex,
-              use: getStyleLoaders(
+              use: [
                 {
-                  importLoaders: 3,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                },
-                'sass-loader'
-              ),
+                  loader:'style-loader'
+                }, {
+                  loader: 'css-loader'
+                }, {
+                  loader: 'sass-loader'
+                }, 
+                {
+                  loader: 'sass-resources-loader',
+                  options: {
+                    resources: [
+                      // resolve方法第二个参数为scss配置文件地址，如果有多个，就进行依次添加即可
+                      path.resolve(__dirname, './../src/styles/atoms.scss'),
+                      path.resolve(__dirname, './../src/styles/mixin.scss'),
+                    ],
+                    modules:true
+                  }
+                }
+              ],
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.
               // See https://github.com/webpack/webpack/issues/6571
               sideEffects: true,
-             
-              
             },
+             
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
             {
@@ -537,8 +525,8 @@ module.exports = function(webpackEnv) {
         },
       ],
     },
-  
     plugins: [
+
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
@@ -683,7 +671,6 @@ module.exports = function(webpackEnv) {
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
-   
     node: {
       module: 'empty',
       dgram: 'empty',
