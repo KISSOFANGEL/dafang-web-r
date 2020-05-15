@@ -1,44 +1,77 @@
 // reset
-html{
+html {
     height: 100%;
 }
+
 body {
     height: 100%;
     margin: 0;
     font-size: 16px;
     font-family: PingFangSC, Helvetica, Arial, sans-serif;
 }
+
 // 图标字体抗锯齿
 .iconfont {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-a { text-decoration: none}
-a:active{color: unset }
-a:-webkit-any-link:active{
-    color: unset ;
+
+a {
+    text-decoration: none
 }
-h1, h2, h3, h4, h5, h6, div, p, ul, li {
+
+a:active {
+    color: currentColor;
+    .iconfont {
+        color: currentColor;
+    }
+}
+
+a:-webkit-any-link:active {
+    color: currentColor;
+    .iconfont {
+        color: currentColor;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+p,
+ul,
+li {
     margin: 0;
     padding: 0;
 }
+
 li {
     list-style: none;
 }
-i, em {
+
+i,
+em {
     font-style: normal;
 }
-b, strong {
+
+b,
+strong {
     font-weight: normal;
 }
+
 input {
     border-width: 0;
     border-style: none;
     outline: none;
 }
+
 .pointer {
     cursor: pointer;
 }
+
 // // ibass
 // [class*=ibass] {
 //     @extend %f-normal;
@@ -75,9 +108,10 @@ $project-type-colors: #FF5469 #4FBE6D #67AAF6 #FA8919;
     transform: translateX(-50%);
 }
 
-.noselect{
-  user-select: none;
+.noselect {
+    user-select: none;
 }
-.number{
+
+.number {
     font-family: DIN Alternate
 }
