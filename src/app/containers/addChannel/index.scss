@@ -1,0 +1,46 @@
+.wrap-add-channel {
+    height: 100%;
+    @include flex(column);
+
+    .main {
+        margin: 320px 0 0 149px;
+
+        input {
+            width: 25rem;
+            height: 6.25rem;
+            font-size: 3.5rem;
+            caret-color: $color-gray8;
+            color: $color-gray9;
+            font-weight: 500;
+
+        }
+
+        ::placeholder {
+            // font-size: 3.5rem;
+            height: 6.25rem;
+            line-height: 6.25rem;
+            color: $color-gray6;
+            padding-left: 8px;
+            font-weight: normal;
+        }
+
+        .msg {
+            .desc {
+                font-size: .875rem;
+                color: $color-gray7;
+            }
+        }
+
+    }
+
+    .close {
+        color: $color-gray4;
+        width: 100%;
+        @include flex(row, flex-end);
+        .iconfont {
+            margin-top: 4.0625rem;
+            margin-right: 5rem;
+        }
+    }
+
+}

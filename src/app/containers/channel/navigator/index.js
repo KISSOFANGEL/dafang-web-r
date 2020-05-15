@@ -12,9 +12,9 @@ function Navi(props) {
             </div>
             <div className="right">
                 <div className="iconfont iconchannel_search"></div>
-                <div className="iconfont iconchannel_show"></div>
+                <div className="iconfont iconFrame31"></div>
                 <div className="iconfont iconchannel_at"></div>
-                <div className="iconfont iconchannellist_people1"></div>
+                <div className="iconfont iconGroup597"></div>
                 <div className="iconfont iconchannel_setting"></div>
                 <div className="add">
                     <div className="iconfont iconaddboard"></div>

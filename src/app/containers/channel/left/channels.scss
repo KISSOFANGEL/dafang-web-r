@@ -6,6 +6,7 @@
         box-sizing: border-box;
         width: 188px;
         margin-bottom: 12px;
+        cursor: pointer;
 
         .title {
             font-size: 16px;
@@ -81,7 +82,7 @@
                     padding: 10px 8px;
                     font-size: 12px;
                     color: $color-gray6;
-                    background-color: $color-gray5;
+                    background-color: $color-gray3;
                 }
             }
         }

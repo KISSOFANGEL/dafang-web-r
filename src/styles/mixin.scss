@@ -22,7 +22,7 @@
 @mixin multiEllipsis($line:2){
     overflow : hidden;
     word-break: break-all;
-    text-overflow: ellipsis;
+    text-overflow: "..";
     display: -webkit-box;
     -webkit-line-clamp: $line;
     -webkit-box-orient: vertical;

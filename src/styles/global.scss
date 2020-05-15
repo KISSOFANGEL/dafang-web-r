@@ -9,9 +9,14 @@ body {
     font-family: PingFangSC, Helvetica, Arial, sans-serif;
 }
 // 图标字体抗锯齿
-.ibass {
+.iconfont {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+a { text-decoration: none}
+a:active{color: unset }
+a:-webkit-any-link:active{
+    color: unset ;
 }
 h1, h2, h3, h4, h5, h6, div, p, ul, li {
     margin: 0;

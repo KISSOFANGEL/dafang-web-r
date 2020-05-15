@@ -1,18 +1,26 @@
 import React from 'react';
 import './channels.scss'
+import { Link } from 'react-router-dom'
 class Channels extends React.Component {
     constructor(props) {
         super(props);
+        this.createChannel = this.createChannel.bind(this)
+    }
+    createChannel() {
 
     }
     render() {
         return (
             <div className="wrap-cards">
                 <div className="card add">
-                    <div className="btn">
-                        <div className="iconfont iconaddboard"></div>
-                        <div className="desc"> 新建频道</div>
-                    </div>
+                    <Link to="/channel/add">
+                        <div className="btn" onClick={this.createChannel}>
+
+                            <div className="iconfont iconaddboard"></div>
+                            <div className="desc"> 新建频道</div>
+
+                        </div>
+                    </Link>
                 </div>
                 <div className="card active">
                     <div className="title">
