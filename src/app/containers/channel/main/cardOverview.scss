@@ -1,7 +1,9 @@
 .wrap-card {
     background-color: $color-white;
-    padding: 24px 24px 28px 24px;
+    // padding: 24px 24px 28px 24px;
     border-radius: 8px;
+    // width: 566px;
+    height: 360px;
     box-shadow: $shadow-1;
 
     .pic {
@@ -24,7 +26,7 @@
         line-height: 2rem;
 
         span {
-            border-bottom: 2px solid #FFDA1A;
+            border-bottom: 2px solid $theme-color-lighter;
 
         }
     }

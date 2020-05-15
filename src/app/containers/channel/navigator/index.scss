@@ -1,6 +1,11 @@
-.wrap-component {
-    @include flex(row, flex-start, center);
+.wrap-navigator {
+    @include flex(row, space-between, center);
     padding-left: 10px;
+
+    .left,
+    .right {
+        @include flex(row, flex-start, center);
+    }
 
     .item {
         font-size: 20px;
@@ -16,5 +21,26 @@
     .iconfont {
         font-size: 16px;
         color: $color-gray10;
+    }
+
+    .right {
+        color: $color-gray8;
+        .iconfont:not(.iconaddboard){
+            margin-right: 25px;
+            font-size: 20px;
+        }
+        .add {
+            width: 36px;
+            height: 36px;
+            background-color: $theme-color-lighter;
+            @include flex(row,center,center);
+            border-radius: 12px;
+            box-shadow: $shadow-1;
+        }
+
+        .iconaddboard {
+            font-size: 15px;
+            color: $color-gray10;
+        }
     }
 }
