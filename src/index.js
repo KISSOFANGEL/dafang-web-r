@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './app/App';
 import './styles/global.scss'
 import * as serviceWorker from './serviceWorker';
+import request from './plugin/request/index'
 
+React.$request = request
 ReactDOM.render(
   <React.StrictMode>
     <App />

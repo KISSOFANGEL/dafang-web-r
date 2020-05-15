@@ -85,6 +85,7 @@
   "devDependencies": {
     "babel-loader": "^8.1.0",
     "fibers": "^5.0.0",
+    "http-proxy-middleware": "^1.0.3",
     "node-sass": "^4.14.1",
     "react-router-dom": "^5.2.0",
     "sass-loader": "^8.0.2",
