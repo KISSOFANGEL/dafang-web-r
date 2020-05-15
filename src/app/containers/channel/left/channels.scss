@@ -40,12 +40,12 @@
             }
         }
         &.add{
-           height: 54px;
            border: 1px dashed rgba(6, 6, 61, 0.3);
            height: 104px;
            @include flex(row,center,center);
            color: $color-gray6;
            font-size: 16px;
+           background-color: transparent;
             .btn{
                 @include flex(row,center,center);
                 height: 24px;
@@ -53,6 +53,24 @@
                     margin-left: 8px;
                     font-size: 16px;
                     color: $color-gray7;
+                }
+            }
+        }
+        &.my{
+            .tags{
+                @include flex(row);
+                margin-top: 8px;
+                overflow: hidden;
+                width: 156px;
+                margin-left: -8px;
+                .tag{
+                    white-space: nowrap;
+                    margin-right: 4px;
+                    border-radius: 12px;
+                    padding: 10px 8px;
+                    font-size: 12px;
+                    color: $color-gray6;
+                    background-color: $color-gray5;
                 }
             }
         }
@@ -65,11 +83,13 @@
         .creater{
             margin: 8px 0 0;
         }
+        .iconGroup5951{
+            color: $color-blue3;
+        }
     }
     .card.active{
         background-color: $color-white;
         box-shadow: $shadow-1;
-       
         .title{
             .desc{
                 font-weight: 500;
@@ -81,7 +101,6 @@
             .iconfont{
                 color:$color-gray7;
                 margin-top: -25px;
-    
             }
         }
         .avatar{

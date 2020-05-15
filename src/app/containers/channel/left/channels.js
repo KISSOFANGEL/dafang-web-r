@@ -40,6 +40,28 @@ class Channels extends React.Component{
                             <div className="cratedon">刚刚更新</div>
                     </div>
                 </div>
+                <div className="card">
+                    <div className="title">
+                        <div className="desc">花花科技服务有限公司</div>
+                        <div className="iconfont iconGroup5951"></div>
+                    </div>
+                    <div className="creater">
+                            <div className="username"> Moyan</div>
+                            <div className="point">.</div>
+                            <div className="cratedon">刚刚更新</div>
+                    </div>
+                </div>
+                <div className="card my">
+                    <div className="title">
+                        <div className="desc">未加入的频道</div>
+                        <div className="count number">16</div>
+                    </div>
+                    <div className="tags">
+                        <div className="tag">自在面包</div>
+                        <div className="tag">智能猫窝</div>
+                        <div className="tag">智能猫窝</div>
+                    </div>
+                </div>
            </div>
             
         )
