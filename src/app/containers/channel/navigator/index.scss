@@ -1,17 +1,20 @@
-.wrap-component{
-    @include flex(row,flex-start,center);
-     padding-left: 10px;
-     .item{
+.wrap-component {
+    @include flex(row, flex-start, center);
+    padding-left: 10px;
+
+    .item {
         font-size: 20px;
         color: $color-gray6;
         margin-right: 32px;
-        &.active{
+
+        &.active {
             font-weight: 500;
             color: $color-gray9;
         }
     }
-     .iconfont{
-         font-size: 16px;
+
+    .iconfont {
+        font-size: 16px;
         color: $color-gray10;
-     }
+    }
 }

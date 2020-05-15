@@ -1,54 +1,63 @@
-.wrap-cards{
-    .card{
+.wrap-cards {
+    .card {
         padding: 24px;
         background-color: $color-bg-gray;
         border-radius: 32px;
         box-sizing: border-box;
         width: 188px;
         margin-bottom: 12px;
-        .title{
+
+        .title {
             font-size: 16px;
             color: $color-gray8;
             width: 140px;
-            @include flex(row,space-between,center);
-            .desc{
-                width:124px;
+            @include flex(row, space-between, center);
+
+            .desc {
+                width: 124px;
                 line-height: 24px;
             }
-        
-            .iconfont{
-            color: $color-gray6;
-            font-size: 12px;
+
+            .iconfont {
+                color: $color-gray6;
+                font-size: 12px;
             }
-            .count{
+
+            .count {
                 font-size: 12px;
                 color: $color-gray6;
-            }  
             }
-            .creater,.users{
-            @include flex(row,flex-start,center)
         }
-        
-        .creater{
+
+        .creater,
+        .users {
+            @include flex(row, flex-start, center)
+        }
+
+        .creater {
             font-size: 12px;
             color: $color-gray6;
             margin: 8px 0 16px 0;
             height: 24px;
             line-height: 24px;
-            .point{
+
+            .point {
                 margin: -8px 5px 0;
             }
         }
-        &.add{
-           border: 1px dashed rgba(6, 6, 61, 0.3);
-           height: 104px;
-           @include flex(row,center,center);
-           color: $color-gray6;
-           font-size: 16px;
-           background-color: transparent;
-            .btn{
-                @include flex(row,center,center);
+
+        &.add {
+            border: 1px dashed rgba(6, 6, 61, 0.3);
+            height: 104px;
+            @include flex(row, center, center);
+            color: $color-gray6;
+            font-size: 16px;
+            background-color: transparent;
+
+            .btn {
+                @include flex(row, center, center);
                 height: 24px;
+
                 .desc {
                     margin-left: 8px;
                     font-size: 16px;
@@ -56,14 +65,16 @@
                 }
             }
         }
-        &.my{
-            .tags{
+
+        &.my {
+            .tags {
                 @include flex(row);
                 margin-top: 8px;
                 overflow: hidden;
                 width: 156px;
                 margin-left: -8px;
-                .tag{
+
+                .tag {
                     white-space: nowrap;
                     margin-right: 4px;
                     border-radius: 12px;
@@ -76,34 +87,41 @@
         }
 
     }
-    .card:not(.active){
-        .desc{
+
+    .card:not(.active) {
+        .desc {
             @include multiEllipsis(1);
         }
-        .creater{
+
+        .creater {
             margin: 8px 0 0;
         }
-        .iconGroup5951{
+
+        .iconGroup5951 {
             color: $color-blue3;
         }
     }
-    .card.active{
+
+    .card.active {
         background-color: $color-white;
         box-shadow: $shadow-1;
-        .title{
-            .desc{
+
+        .title {
+            .desc {
                 font-weight: 500;
                 color: $color-gray9;
             }
-          
+
             word-wrap: break-word;
             word-break: break-all;
-            .iconfont{
-                color:$color-gray7;
+
+            .iconfont {
+                color: $color-gray7;
                 margin-top: -25px;
             }
         }
-        .avatar{
+
+        .avatar {
             width: 28px;
             height: 28px;
             border-radius: 12px;

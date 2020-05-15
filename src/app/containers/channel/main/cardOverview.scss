@@ -1,27 +1,31 @@
-.wrap-card{
+.wrap-card {
     background-color: $color-white;
     padding: 24px 24px 28px 24px;
     border-radius: 8px;
     box-shadow: $shadow-1;
-    .pic{
+
+    .pic {
         width: 518px;
         height: 198px;
     }
-    .channelname{
+
+    .channelname {
         margin-top: 32px;
         font-weight: 600;
         font-size: 20px;
         color: $color-gray9;
     }
-    .desc{
+
+    .desc {
         margin-top: 16px;
         font-size: 14px;
-        color:$color-gray8;
+        color: $color-gray8;
         width: 523px;
         line-height: 2rem;
-        span{
-           border-bottom: 2px solid #FFDA1A;
-            
+
+        span {
+            border-bottom: 2px solid #FFDA1A;
+
         }
     }
 }

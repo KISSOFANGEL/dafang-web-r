@@ -1,32 +1,32 @@
-  import React from 'react';
-  import  './App.scss'
-  import Channel from './containers/channel/index.js'
-  import {
-    BrowserRouter as Router,
-    
-  } from "react-router-dom";
-class App extends React.Component{
-  constructor(props){
+import React from 'react';
+import './App.scss'
+import Channel from './containers/channel/index.js'
+import {
+  BrowserRouter as Router,
+
+} from "react-router-dom";
+class App extends React.Component {
+  constructor(props) {
     super(props)
     this.state = {
-      date:new Date()
+      date: new Date()
     }
   }
-  componentDidMount(){
-    this.timeID = setInterval(() => 
-    this.setState({date:new Date()}), 1000);
+  componentDidMount() {
+    this.timeID = setInterval(() =>
+      this.setState({ date: new Date() }), 1000);
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.timeID)
   }
-  tick(){
-    this.setState({date:new Date()})
+  tick() {
+    this.setState({ date: new Date() })
   }
-  render(){
+  render() {
     return (
       <Router>
         <Channel />
-        </Router>
+      </Router>
     )
   }
 }
