@@ -7,6 +7,12 @@ export default class index extends Component {
             isChecked: !!props.isChecked
         }
     }
+    componentDidUpdate(){
+        setTimeout(() => {
+            this.setState({isChecked:this.props.isChecked})
+        }, 0);
+    }
+    
     setIsChecked=()=>{
         this.setState({isChecked:!this.state.isChecked})
         this.props.cb(this.state.isChecked)

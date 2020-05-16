@@ -26,7 +26,7 @@ export default class addChannelS1 extends Component {
         return (
             <div className="wrap-addchannel-step1-main">
                     <div className="input">
-                        <div className="preicon">{this.state.isPrivate && <div className="iconfont iconGroup764"></div>}</div>
+                        <div className="preicon">{this.state.isPrivate && <div className="iconfont iconcreatechannel_secret-copy"></div>}</div>
                         <input type="text" name="channelName" value={this.state.channelName} className="input-channel-name" autoFocus placeholder={this.state.placeholder} onChange={this.channelNameChange} autoComplete="off"></input>
                         {this.state.channelName &&
                             <div className="next pointer" onClick={this.props.nextStep}>

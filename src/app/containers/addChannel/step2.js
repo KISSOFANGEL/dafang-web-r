@@ -9,23 +9,20 @@ export default class step2 extends Component {
             selectedTmps:[]
         }
     }
-    selectPannel = (v,i) => {
+    selectPannel = (i) => {
         // console.log(v,i)
         let name = this.state.templates[i].name
         let index = this.state.selectedTmps.indexOf(name);
         let selectedTmps = this.state.selectedTmps;
         if(index===-1){
             selectedTmps.push(name)
-            this.setState({
-                selectedTmps
-            })
         }
         else{
             selectedTmps.splice(index)
-            this.setState(
-                {selectedTmps}
-            )
         }
+        this.setState(
+            {selectedTmps}
+        )
     }
     
     render() {
@@ -40,12 +37,12 @@ export default class step2 extends Component {
                 </div>
                 <div className="pannels">
                     {this.state.templates.map((item,i) =>
-                        <div className="pannel" key={i}>
+                        <div className="pannel" key={i} onClick={e=>{this.selectPannel(i)}}>
                             <div className="template">
                                 <img src={require(`@/static/add-channel/${item.fileName}.png`)} alt=""></img>
                             </div>
                             <div className="flex">
-                                <div className="checkbox"><Checkbox cb={e=>{this.selectPannel(e,i)}}></Checkbox></div>
+                                <div className="checkbox"><Checkbox cb={e=>{}} isChecked={this.state.selectedTmps.indexOf(item.name)>-1}></Checkbox></div>
                                 <div className="name">{item.desc}</div>
                             </div>
                         </div>
