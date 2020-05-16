@@ -12,6 +12,7 @@ export default class index extends Component {
     }
     toggle() {
         this.setState((state)=> { return { isOn: !state.isOn } })
+        this.props.cb(this.state.isOn)
     }
     render() {
         return (

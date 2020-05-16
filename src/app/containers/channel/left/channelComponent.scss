@@ -1,0 +1,113 @@
+.wrap-component-channel {
+    .card {
+        padding: 24px;
+        background-color: $color-bg-gray;
+        border-radius: 32px;
+        box-sizing: border-box;
+        width: 188px;
+        margin-bottom: 12px;
+        cursor: pointer;
+
+        .title {
+            font-size: 16px;
+            color: $color-gray8;
+            width: 140px;
+            @include flex(row, space-between, center);
+
+            .desc {
+                width: 124px;
+                line-height: 24px;
+            }
+
+            .iconfont {
+                color: $color-gray6;
+                font-size: 12px;
+            }
+
+            .count {
+                font-size: 12px;
+                color: $color-gray6;
+            }
+        }
+
+        .creater,
+        .users {
+            @include flex(row, flex-start, center)
+        }
+
+        .creater {
+            font-size: 12px;
+            color: $color-gray6;
+            margin: 8px 0 16px 0;
+            height: 24px;
+            line-height: 24px;
+
+            .point {
+                margin: -8px 5px 0;
+            }
+        }
+
+        
+
+        &.my {
+            .tags {
+                @include flex(row);
+                margin-top: 8px;
+                overflow: hidden;
+                width: 156px;
+                margin-left: -8px;
+
+                .tag {
+                    white-space: nowrap;
+                    margin-right: 4px;
+                    border-radius: 12px;
+                    padding: 10px 8px;
+                    font-size: 12px;
+                    color: $color-gray6;
+                    background-color: $color-gray3;
+                }
+            }
+        }
+
+    }
+
+    .card:not(.active) {
+        .desc {
+            @include multiEllipsis(1);
+        }
+
+        .creater {
+            margin: 8px 0 0;
+        }
+
+        .iconGroup5951 {
+            color: $color-blue3;
+        }
+    }
+
+    .card.active {
+        background-color: $color-white;
+        box-shadow: $shadow-1;
+
+        .title {
+            .desc {
+                font-weight: 500;
+                color: $color-gray9;
+            }
+
+            word-wrap: break-word;
+            word-break: break-all;
+
+            .iconfont {
+                color: $color-gray7;
+                margin-top: -25px;
+            }
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 12px;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+.wrap-component-checkbox{
+    .iconfont{
+        width: 18px;
+        height: 18px;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .normal{
+        border:2px solid $theme-color-lighter;
+       
+    };
+    .iconchecked{
+        color: $color-gray9;
+        background-color: $theme-color-lighter;
+        @include flex(row ,center,center);
+        font-size: 10px;
+        // padding: px;
+        // border-radius: 5px;
+    }
+}
