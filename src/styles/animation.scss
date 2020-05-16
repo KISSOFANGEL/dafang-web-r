@@ -29,3 +29,18 @@
     transform: rotate(360deg);
   }
 }
+
+.line-move{
+  animation-duration: .2s;
+  animation-name: lineMove;
+  animation-timing-function: linear;
+}
+@keyframes lineMove{
+  from{
+    left: 0
+  }
+  to{
+    right: 0;
+  }
+  
+}
