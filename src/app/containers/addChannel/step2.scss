@@ -52,5 +52,8 @@
         box-sizing: border-box;
         color: $color-gray9;
         font-weight: 500;
+        &.active{
+            background-color: $theme-color-lighter;
+        }
     }
 }

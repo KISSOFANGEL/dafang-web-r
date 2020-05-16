@@ -9,12 +9,25 @@ export default class step2 extends Component {
             selectedTmps:[]
         }
     }
-    selectPannel = (v) => {
-        // if(this.state.selectedTmps.indexOf(this.templates))
+    selectPannel = (v,i) => {
+        // console.log(v,i)
+        let name = this.state.templates[i].name
+        let index = this.state.selectedTmps.indexOf(name);
+        let selectedTmps = this.state.selectedTmps;
+        if(index===-1){
+            selectedTmps.push(name)
+            this.setState({
+                selectedTmps
+            })
+        }
+        else{
+            selectedTmps.splice(index)
+            this.setState(
+                {selectedTmps}
+            )
+        }
     }
-    setPannelIndex(i){
-        console.log(i)
-    }
+    
     render() {
         return (
             <div className="wrap-addchannel-step2">
@@ -27,19 +40,19 @@ export default class step2 extends Component {
                 </div>
                 <div className="pannels">
                     {this.state.templates.map((item,i) =>
-                        <div className="pannel">
+                        <div className="pannel" key={i}>
                             <div className="template">
                                 <img src={require(`@/static/add-channel/${item.fileName}.png`)} alt=""></img>
                             </div>
                             <div className="flex">
-                                <div className="checkbox"><Checkbox cb={this.selectPannel}></Checkbox></div>
+                                <div className="checkbox"><Checkbox cb={e=>{this.selectPannel(e,i)}}></Checkbox></div>
                                 <div className="name">{item.desc}</div>
                             </div>
                         </div>
                     )}
 
                 </div>
-                <div className="crateBtn">创建空白频道</div>
+                <div className={`crateBtn ${this.state.selectedTmps.length>0?'active':null}`}>{`创建${this.state.selectedTmps.length>0?'':'空白'}频道`}</div>
             </div>
         )
     }
