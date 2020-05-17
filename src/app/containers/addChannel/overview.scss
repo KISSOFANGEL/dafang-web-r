@@ -1,0 +1,31 @@
+.wrap-addchannel-overview {
+    box-shadow: $shadow-2;
+    background-color: $color-bg-normal;
+    width: 50.25rem;
+    height: 49.875rem;
+    padding: 1.875rem 2rem 2rem;
+    border-radius: 6px;
+    box-sizing: border-box;
+
+    .modules {
+        @include flex(row);
+
+        .module {
+            margin-right: 2rem;
+            font-size: 1.25rem;
+            color: $color-gray6;
+
+            &.active {
+                color: $color-gray9;
+                font-weight: 500;
+            }
+
+        }
+
+    }
+
+    img {
+        height: 42.75rem;
+        margin-top: 2rem;
+    }
+}

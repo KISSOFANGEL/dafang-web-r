@@ -23,47 +23,48 @@ export default class addChannelS1 extends Component {
         this.setState({ isPrivate: v })
     }
     render() {
+        const { isPrivate, channelName, placeholder, publicChannelDesc, privateChannelDesc } = this.state
         return (
             <div className="wrap-addchannel-step1-main">
-                    <div className="input">
-                        <div className="preicon">{this.state.isPrivate && <div className="iconfont iconcreatechannel_secret-copy"></div>}</div>
-                        <input type="text" name="channelName" value={this.state.channelName} className="input-channel-name" autoFocus placeholder={this.state.placeholder} onChange={this.channelNameChange} autoComplete="off"></input>
-                        {this.state.channelName &&
-                            <div className="next pointer" onClick={this.props.nextStep}>
-                                <div className="iconfont iconarrow_right"></div>
-                            </div>
-                        }
-                    </div>
-                    <div className="msg">
-                        <div className="switch">
-                            <Switch cb={this.setChannelType}></Switch>
-                        </div>
-                        <div className="desc">
-                            {this.state.publicChannelDesc}
-                        </div>
-                    </div>
-                    {this.state.channelName &&
-                        <div className="suggestion">
-                            <div className="desc">
-                                您是否想加入以下公开频道
-                            </div>
-                            <div className={`channels add-channels-list ${this.state.isScrolling ? 'isScrolling' : null}`}>
-                                <div className="channel">
-                                    <Channel type={'active'}></Channel>
-                                </div>
-                                <div className="channel">
-                                    <Channel type={'active'}></Channel>
-                                </div>
-                                <div className="channel">
-                                    <Channel type={'active'}></Channel>
-                                </div>
-                                <div className="channel">
-                                    <Channel type={'active'}></Channel>
-                                </div>
-
-                            </div>
+                <div className="input">
+                    <div className="preicon">{isPrivate && <div className="iconfont iconcreatechannel_secret-copy"></div>}</div>
+                    <input type="text" name="channelName" value={channelName} className="input-channel-name" autoFocus placeholder={placeholder} onChange={this.channelNameChange} autoComplete="off"></input>
+                    {channelName &&
+                        <div className="next pointer" onClick={e => { this.props.nextStep(channelName) }}>
+                            <div className="iconfont iconarrow_right"></div>
                         </div>
                     }
-                </div>)
+                </div>
+                <div className="msg">
+                    <div className="switch">
+                        <Switch cb={this.setChannelType}></Switch>
+                    </div>
+                    <div className="desc">
+                        {isPrivate ? privateChannelDesc : publicChannelDesc}
+                    </div>
+                </div>
+                {channelName &&
+                    <div className="suggestion">
+                        <div className="desc">
+                            您是否想加入以下公开频道
+                            </div>
+                        <div className={`channels add-channels-list`}>
+                            <div className="channel">
+                                <Channel type={'active'}></Channel>
+                            </div>
+                            <div className="channel">
+                                <Channel type={'active'}></Channel>
+                            </div>
+                            <div className="channel">
+                                <Channel type={'active'}></Channel>
+                            </div>
+                            <div className="channel">
+                                <Channel type={'active'}></Channel>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>)
     }
 }
