@@ -6,7 +6,7 @@ export default class step2 extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            templates: [{ name: 'general', desc: '综合面板', fileName: 'generalboard' }, { name: 'project', desc: '项目管理', fileName: 'projectboard' }, { name: 'wiki', desc: '知识管理', fileName: 'wikiboard' }, { name: 'whiteboard', desc: 'whiteboard', fileName: 'preview_whiteboard' }, { name: 'showcase', desc: 'showcase', fileName: 'preview_showcase' }],
+            templates: [{ name: 'general', desc: '综合面板', fileName: 'generalboard' }, { name: 'project', desc: '项目管理', fileName: 'projectboard' }, { name: 'wiki', desc: '知识管理', fileName: 'wikiboard' }, { name: 'whiteboard', desc: 'whiteboard', fileName: 'whiteboard' }, { name: 'showcase', desc: 'showcase', fileName: 'showcase' }],
             selectedTmps: []
         }
     }

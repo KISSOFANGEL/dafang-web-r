@@ -6,8 +6,11 @@ class overview extends Component {
         this.state = {
             modules: props.modules,
             activeModue: 0,
-            
+
         }
+    }
+    setActiveModule = (i) => {
+        this.setState({ activeModue: i })
     }
 
     render() {
@@ -16,8 +19,8 @@ class overview extends Component {
             <div className="wrap-addchannel-overview">
                 <div className="modules">
                     {modules.map((item, i) =>
-                        <div>
-                            <div className={`module ${activeModue === i ? 'active' : null}`} key={i}>
+                        <div key={i}>
+                            <div className={`module pointer ${activeModue === i ? 'active' : null}`}  onClick={e => { this.setActiveModule(i) }}>
                                 <div className="desc">{item.desc}</div>
                             </div>
                         </div>
