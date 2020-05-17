@@ -4,8 +4,9 @@ class overview extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            modules: [{ name: 'general', desc: '综合面板', fileName: 'preview_generalboard' }, { name: 'project', desc: '项目管理', fileName: 'projectboard' }, { name: 'wiki', desc: '知识管理', fileName: 'wikiboard' }, { name: 'whiteboard', desc: 'whiteboard', fileName: 'preview_whiteboard' }, { name: 'showcase', desc: 'showcase', fileName: 'preview_showcase' }],
-            activeModue: 0
+            modules: props.modules,
+            activeModue: 0,
+            
         }
     }
 
@@ -22,7 +23,7 @@ class overview extends Component {
                         </div>
                     )}
                 </div>
-                <img src={require(`@/static/add-channel/${modules[activeModue].fileName}.png`)} alt=""></img>
+                <img src={require(`@/static/add-channel/preview_${modules[activeModue].fileName}.png`)} alt=""></img>
             </div>
         );
     }

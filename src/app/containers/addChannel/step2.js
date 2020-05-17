@@ -11,11 +11,11 @@ export default class step2 extends Component {
         }
     }
     selectPannel = (i) => {
-        let name = this.state.templates[i].name
-        let index = this.state.selectedTmps.indexOf(name);
+        let module = this.state.templates[i]
+        let index = this.state.selectedTmps.indexOf(module);
         let selectedTmps = this.state.selectedTmps;
         if (index === -1) {
-            selectedTmps.push(name)
+            selectedTmps.push(module)
         }
         else {
             selectedTmps.splice(index)
@@ -45,7 +45,7 @@ export default class step2 extends Component {
                                     <img src={require(`@/static/add-channel/${item.fileName}.png`)} alt=""></img>
                                 </div>
                                 <div className="flex">
-                                    <div className="checkbox"><Checkbox isChecked={selectedTmps.indexOf(item.name) > -1}></Checkbox></div>
+                                    <div className="checkbox"><Checkbox isChecked={selectedTmps.indexOf(item) > -1}></Checkbox></div>
                                     <div className="name">{item.desc}</div>
                                 </div>
                             </div>
@@ -54,9 +54,12 @@ export default class step2 extends Component {
                     </div>
                     <div className={`crateBtn ${selectedTmps.length > 0 ? 'active' : null}`}>{`创建${selectedTmps.length > 0 ? '' : '空白'}频道`}</div>
                 </div>
-                <div className="overview">
-                    <Overview></Overview>
-                </div>
+                {
+                    selectedTmps.length > 0 &&
+                    <div className="overview">
+                        <Overview modules={selectedTmps}></Overview>
+                    </div>
+                }
             </div>
         )
     }
