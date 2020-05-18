@@ -18,7 +18,7 @@ export default class step2 extends Component {
             selectedTmps.push(module)
         }
         else {
-            selectedTmps.splice(index)
+            selectedTmps.splice(index,1)
         }
         this.setState(
             { selectedTmps }
