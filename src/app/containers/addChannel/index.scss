@@ -3,8 +3,6 @@
     overflow: hidden;
     @include flex(column);
 
-    
-
     .close {
         color: $color-gray4;
         width: 100%;
@@ -16,6 +14,6 @@
         }
     }
 
-    
+
 
 }
