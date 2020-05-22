@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss'
 import Channel from './containers/channel/index.js'
 import AddChannel from './containers/addChannel/index.js'
+import Login from './login/login.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +14,7 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/channel/add" component={AddChannel} />
+          <Route path="/login" component={Login} />
           <Route path="/" component={Channel} />
 
         </Switch>
