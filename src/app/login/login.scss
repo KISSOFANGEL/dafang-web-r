@@ -1,7 +1,9 @@
 .wrap-login {
     height: 100%;
-    background-image: url('../../static/login/login_background.png');
+    background: url('../../static/login/login_background.png') no-repeat fixed;
     @include flex(column,center,center);
+    // z-index: -1;
+    background-size: cover;
     .slogan {
         color: $color-white;
         font-weight: 500;
@@ -20,4 +22,5 @@
         margin-top: 3.5rem;
         cursor: pointer;
     }
+  
 }
