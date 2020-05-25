@@ -5,12 +5,11 @@ export default class dropdownmenu extends Component {
         super(props)
     }
     render() {
-        const { theme, type, menu, visible } = this.props
+        const { theme ,menu} = this.props
         return (
             <div className="component-dropdownmenu">
                 {
-                    visible &&
-                    <ul className={`dropdown__menu dropdown__menu--${theme} ${type ? 'dropdown__menu--${type}' : ''}`} >
+                    <ul className={`dropdown__menu dropdown__menu--${theme||'default'} `} >
                         <div className="dropwdown-solt">{menu}</div>
                     </ul>
                 }

@@ -2,7 +2,7 @@
     width: 100%;
     @include flex(row, center, center);
 
-    .logo {
+    .avator {
         width: 40px;
         height: 40px;
     }
@@ -28,5 +28,63 @@
         -webkit-text-fill-color: transparent;
         transform: rotate(-8deg);
         ;
+    }
+}
+
+.wrap-logo-menu {
+    width: 11.25rem;
+
+    .items {
+        .item {
+            margin-bottom: 1rem;
+            @include flex(row, space-between, center);
+
+            .name {
+                margin-left: 1rem;
+                flex: 1;
+                .userName {
+                    font-size: .75rem;
+                    color: $color-gray9;
+                }
+
+                .desc {
+                    font-size: .625rem;
+                    color: $color-gray6;
+                }
+            }
+
+            .avator {
+                width: 2rem;
+                height: 2rem;
+            }
+            .iconfont{
+                width: .875rem;
+                font-size:.5625rem;
+                color: #2E2E58;
+            }
+        }
+
+        .create-space {
+            margin-top: .125rem;
+            font-size: .75rem;
+            margin-left: 2.75rem;
+            color: $color-gray7;
+        }
+        .line{
+            height: .0625rem;
+            margin-top: 1rem;
+            background-color: $color-gray7;
+            opacity: .2;
+        }
+    }
+    .setting{
+        margin-left: 2.75rem;
+        padding-top: .125rem;
+        .set{
+            margin-top: 1rem;
+        }
+        .logoout{
+            color: $color-gray7;
+        }
     }
 }
