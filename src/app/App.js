@@ -16,7 +16,6 @@ class App extends React.Component {
           <Route path="/channel/add" component={AddChannel} />
           <Route path="/login" component={Login} />
           <Route path="/" component={Channel} />
-
         </Switch>
       </Router>
     )

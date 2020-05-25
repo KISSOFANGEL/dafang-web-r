@@ -4,6 +4,9 @@
     @include flex(column,center,center);
     // z-index: -1;
     background-size: cover;
+    .step1{
+        @include flex(column,center,center);
+    }
     .slogan {
         color: $color-white;
         font-weight: 500;

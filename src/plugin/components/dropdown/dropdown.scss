@@ -1,0 +1,10 @@
+.component-dropdown{
+    .dropdown {
+        &.dropdown--positioning {
+          position: relative;
+        }
+        &.dropdown--non-positioning {
+          position: unset;
+        }
+      }
+}

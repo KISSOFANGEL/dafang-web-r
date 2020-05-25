@@ -1,10 +1,13 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 　　module.exports = function(app) {
-　　　　app.use('/U9', createProxyMiddleware({
-    　　　　 target: 'https://erptest.jsxq.group/',
+　　　　app.use('/dafang', createProxyMiddleware({
+    　　　　 target: 'http://52.81.170.113:8090/',
             secure: true,
-            changeOrigin: true
+            changeOrigin: true,
+            pathRewrite: {
+                '/dafang/': '/', // rewrite path
+              }
 　　　　}));
         app.use('/mes', createProxyMiddleware({
     　　　　 target: 'https://data.jsxq.group',
