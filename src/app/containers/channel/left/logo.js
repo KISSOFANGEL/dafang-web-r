@@ -14,15 +14,15 @@ class Logo extends React.Component {
     }
     getSpaces = async () => {
         const res = await React.$request.get('/dafang/space/user', {})
-        this.setState({spaces:res.data})
-       this.state.spaces.map(item=>{
-           if(item.space.type===0&&!React.db.ls.get("activeSpace")){
-               React.db.ls.set("activeSpace",item)
-           }
-       })
+        this.setState({ spaces: res.data })
+        this.state.spaces.map(item => {
+            if (item.space.type === 0 && !React.db.ls.get("activeSpace")) {
+                React.db.ls.set("activeSpace", item)
+            }
+        })
     }
     render() {
-        const {spaces} = this.state
+        const { spaces } = this.state
         return (
             <>
                 <Dropdown trigger={
@@ -33,7 +33,7 @@ class Logo extends React.Component {
                         <div className="iconfont iconheader_flash"></div>
                     </div>
                 } dropdownmenu={
-                    <Space spaces={spaces}/>
+                    <Space spaces={spaces} />
                 }></Dropdown>
 
             </>

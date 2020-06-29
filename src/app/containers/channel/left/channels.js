@@ -13,7 +13,8 @@ class Channels extends React.Component {
         this.getChannels()
     }
     getChannels = async () => {
-        let res = await React.$request.get(`/dafang/channel/list/${React.db.ls.get("activeSpace").space.id}`)
+        let spaceid = React.db.ls.get("activeSpace") ? React.db.ls.get("activeSpace").space.id : -1
+        let res = await React.$request.get(`/dafang/channel/list/${spaceid}`)
         this.setState({ channels: res.data.singleList })
     }
     render() {
@@ -30,7 +31,7 @@ class Channels extends React.Component {
                     </div>
                 </Link>
                 {
-                    channels.map((channel,index) => <Channel  type={index===0?'active':'normal'} key={index} channel={channel}></Channel>)
+                    channels.map((channel, index) => <Channel type={index === 0 ? 'active' : 'normal'} key={index} channel={channel}></Channel>)
                 }
 
                 {/* <Channel type={'normal'}></Channel>

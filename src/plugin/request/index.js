@@ -1,5 +1,8 @@
 import Axios from 'axios'
 import db from '../db'
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
+let isLogined = true
 const ls = db.ls
 const params2Query = params/* :Object */ => {
   return Object.entries(params).map(keyValue => keyValue.join('=')).join('&')
@@ -33,7 +36,7 @@ axios.interceptors.request.use(
   (config) => {
     config.headers = Object.assign(config.headers, {
       // 'Authorization': `Token ${ls.get('iFileToken')}`,
-      'token': ls.get('userToken').token,
+      'token': ls.get('userToken') ? ls.get('userToken').token : '',
       'deviceType': 'web'
     })
 
@@ -54,11 +57,15 @@ axios.interceptors.response.use(
     // }
   },
   (error) => {
+    if(error.response.status===401)
+    window.location.href="/login"
+    return error.response
+    // return {}
     // if (error.response) {
     //   switch (error.response.status) {
     //     case 401:
     //       // postMessage.stateGo('login.wechat')
-    //   }
+    //   } 
     //   return error.response
     // }
   }
