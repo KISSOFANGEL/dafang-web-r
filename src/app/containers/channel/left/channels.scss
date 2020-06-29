@@ -1,4 +1,6 @@
 .wrap-cards {
+    height: calc(100vh - 10.5rem);
+    overflow-y: scroll;
     .add-channel {
         border-radius: 32px;
         box-sizing: border-box;

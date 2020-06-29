@@ -123,3 +123,6 @@ $project-type-colors: #FF5469 #4FBE6D #67AAF6 #FA8919;
 .flex {
     @include flex(row,flex-start,center);
 }
+.cursor{
+    cursor: pointer;
+}

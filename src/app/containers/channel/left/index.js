@@ -3,6 +3,7 @@ import './index.scss';
 import Logo from './logo.js'
 import Channels from './channels'
 class Left extends React.Component {
+   
     render() {
         return (
             <div className="wrap">

@@ -1,6 +1,6 @@
 import Axios from 'axios'
-
-
+import db from '../db'
+const ls = db.ls
 const params2Query = params/* :Object */ => {
   return Object.entries(params).map(keyValue => keyValue.join('=')).join('&')
 }
@@ -29,17 +29,17 @@ methods.forEach(method => {
 })
 
 // // request 拦截器
-// axios.interceptors.request.use(
-//   (config) => {
-//     config.headers = Object.assign(config.headers, {
-//       'Authorization': `Token ${ls.get('iFileToken')}`,
-//       'token': ls.get('token'),
-//       'deviceType': 'web'
-//     })
+axios.interceptors.request.use(
+  (config) => {
+    config.headers = Object.assign(config.headers, {
+      // 'Authorization': `Token ${ls.get('iFileToken')}`,
+      'token': ls.get('userToken').token,
+      'deviceType': 'web'
+    })
 
-//     return config
-//   }
-// )
+    return config
+  }
+)
 
 // response 拦截器
 axios.interceptors.response.use(

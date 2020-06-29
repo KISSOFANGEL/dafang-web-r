@@ -5,8 +5,10 @@ import App from './app/App';
 import './index.scss'
 import * as serviceWorker from './serviceWorker';
 import request from './plugin/request/index'
+import db from './plugin/db/index'
 
 React.$request = request
+React.db = db
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -30,7 +30,7 @@ export default class addChannelS1 extends Component {
                     <div className="preicon">{isPrivate && <div className="iconfont iconcreatechannel_secret-copy"></div>}</div>
                     <input type="text" name="channelName" value={channelName} className="input-channel-name" autoFocus placeholder={placeholder} onChange={this.channelNameChange} autoComplete="off"></input>
                     {channelName &&
-                        <div className="next pointer" onClick={e => { this.props.nextStep(channelName) }}>
+                        <div className="next pointer" onClick={e => { this.props.nextStep({channelName,isPrivate}) }}>
                             <div className="iconfont iconarrow_right"></div>
                         </div>
                     }

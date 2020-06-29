@@ -5,9 +5,19 @@ import Channel from './channelComponent'
 class Channels extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            channels: []
+        }
     }
-
+    componentDidMount() {
+        this.getChannels()
+    }
+    getChannels = async () => {
+        let res = await React.$request.get(`/dafang/channel/list/${React.db.ls.get("activeSpace").space.id}`)
+        this.setState({ channels: res.data.singleList })
+    }
     render() {
+        const { channels } = this.state
         return (
             <div className="wrap-cards">
                 <Link to="/channel/add">
@@ -19,10 +29,13 @@ class Channels extends React.Component {
 
                     </div>
                 </Link>
-                <Channel></Channel>
-                <Channel type={'normal'}></Channel>
+                {
+                    channels.map((channel,index) => <Channel  type={index===0?'active':'normal'} key={index} channel={channel}></Channel>)
+                }
+
+                {/* <Channel type={'normal'}></Channel>
                 <Channel type={'outside'}></Channel>
-                <Channel type={'folder'}></Channel>
+                <Channel type={'folder'}></Channel> */}
             </div>
 
         )

@@ -21,7 +21,7 @@ class overview extends Component {
                     {modules.map((item, i) =>
                         <div key={i}>
                             <div className={`module pointer ${activeModue === i ? 'active' : null}`}  onClick={e => { this.setActiveModule(i) }}>
-                                <div className="desc">{item.desc}</div>
+                                <div className="desc">{item.name}</div>
                             </div>
                         </div>
                     )}

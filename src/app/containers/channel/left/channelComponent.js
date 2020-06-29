@@ -4,16 +4,21 @@ export default class channelComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            channelTypee: props.type || 'active'
+            channelTypee: props.type || 'active',
+            channel:props.channel||{}
         }
     }
+    componentDidMount(){
+        console.log('fuxk')
+    }
     render() {
+        const { channel } = this.state
         return (
             <div className="wrap-component-channel">
                 {this.state.channelTypee === 'active' &&
                     <div className="card active">
                         <div className="title">
-                            <div className="desc">自在面包纺品牌升级项目</div>
+                            <div className="desc">{channel.name}</div>
                             <div className="iconfont iconGroup296"></div>
                         </div>
                         <div className="creater">
@@ -29,7 +34,7 @@ export default class channelComponent extends Component {
                 {this.state.channelTypee === 'normal' &&
                     <div className="card">
                         <div className="title">
-                            <div className="desc">智能猫窝硬件系统</div>
+                            <div className="desc">{channel.name}</div>
                             <div className="iconfont iconchannellist_people1"></div>
                             <div className="count number">16</div>
                         </div>
@@ -43,7 +48,7 @@ export default class channelComponent extends Component {
                 {this.state.channelTypee === 'outside' &&
                     <div className="card">
                         <div className="title">
-                            <div className="desc">花花科技服务有限公司</div>
+                            <div className="desc">{channel.name}</div>
                             <div className="iconfont iconGroup5951"></div>
                         </div>
                         <div className="creater">

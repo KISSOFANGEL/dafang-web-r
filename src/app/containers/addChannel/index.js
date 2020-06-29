@@ -8,17 +8,18 @@ export default class index extends Component {
         super(props)
         this.state = {
             curStep: 1,
-            channelName:''
+            channel:'',
+            
         }
     }
-    setStep = (channelName) => {
-        this.setState({ curStep: 2,channelName})
+    setStep = (channel) => {
+        this.setState({ curStep: 2,channel})
     }
     goback = () => {
         this.setState({ curStep: 1 })
     }
     render() {
-        const {curStep,channelName} = this.state
+        const {curStep,channel} = this.state
         return (
             <div className="wrap-add-channel">
                 <div className="close">
@@ -34,7 +35,7 @@ export default class index extends Component {
                     <Step1 nextStep={v=>{this.setStep(v)}}></Step1>
                 </div>
                 <div style={{ display: curStep === 2 ? 'block' : 'none' }}>
-                    <Step2 channelName = {channelName}></Step2>
+                    <Step2 channel = {channel}></Step2>
                 </div>
             </div>
         );
