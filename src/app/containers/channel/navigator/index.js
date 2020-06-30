@@ -16,9 +16,12 @@ class Navi extends Component {
     handleChange = async () => {
         // console.log(React.$store.getState())
         let _curChannel = React.$store.getState().channel.activedChannel
-        if (_curChannel&&this.state.curChannelId !== _curChannel.channel.id) {
+        if (_curChannel && this.state.curChannelId !== _curChannel.channel.id) {
             this.setState({ panels: _curChannel.panelList, activedPanel: 0, curChannelId: _curChannel.channel.id })
         }
+    }
+    setActivedPanel = (index) => {
+        this.setState({ activedPanel: index })
     }
     render() {
         const { panels, activedPanel } = this.state
@@ -27,7 +30,7 @@ class Navi extends Component {
                 <div className="left">
                     {
                         panels.map((panel, index) =>
-                            <div className={`item ${index === activedPanel && 'active'}`} key={index}>{panel.name}</div>
+                            <div className={`cursor item ${index === activedPanel && 'active'}`} key={index} onClick={e => this.setActivedPanel(index)}>{panel.name}</div>
                         )
                     }
                     <div className="iconfont iconaddboard"></div>
