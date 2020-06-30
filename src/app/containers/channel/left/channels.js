@@ -9,17 +9,23 @@ class Channels extends React.Component {
         super(props);
         this.state = {
             channels: [],
+            curSpaceId: -1,
             activedChannelInfo: {}
         }
     }
     componentDidMount() {
-        this.getChannels()
+        React.$store.subscribe(this.getChannels)
+        // this.getChannels()
     }
     getChannels = async () => {
-        let spaceid = React.db.ls.get("activeSpace") ? React.db.ls.get("activeSpace").space.id : -1
-        let res = await React.$request.get(`/dafang/channel/list/${spaceid}`)
-        this.setState({ channels: res.data.singleList })
-        this.setActiveChannel(this.state.channels[0])
+        let _curSpace = React.$store.getState().space
+        console.log(_curSpace);
+        
+        if (_curSpace && _curSpace.activedSpace.id !== this.state.curSpaceId) {
+            let res = await React.$request.get(`/dafang/channel/list/${_curSpace.activedSpace.id}`)
+            this.setState({ channels: res.data.singleList, curSpaceId: _curSpace.activedSpace.id })
+            this.setActiveChannel(this.state.channels[0])
+        }
     }
     setActiveChannel = async (channel) => {
         let res = await React.$request.get(`/dafang/channel/info/${channel.id}`)

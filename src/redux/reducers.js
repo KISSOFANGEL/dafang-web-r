@@ -8,7 +8,14 @@ function channel(state = 0, action) {
         default: return state
     }
 }
+function space(state = 0, action) {
+    switch (action.type) {
+        case types.SET_ACTIVED_SPACE:
+            return action.data
+        default: return state
+    }
+}
 const Reducer = combineReducers({
-    channel,
+    channel, space
 })
 export default Reducer

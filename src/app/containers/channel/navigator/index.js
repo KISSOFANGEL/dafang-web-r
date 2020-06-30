@@ -14,8 +14,9 @@ class Navi extends Component {
         React.$store.subscribe(this.handleChange)
     }
     handleChange = async () => {
+        // console.log(React.$store.getState())
         let _curChannel = React.$store.getState().channel.activedChannel
-        if (this.state.curChannelId !== _curChannel.channel.id) {
+        if (_curChannel&&this.state.curChannelId !== _curChannel.channel.id) {
             this.setState({ panels: _curChannel.panelList, activedPanel: 0, curChannelId: _curChannel.channel.id })
         }
     }

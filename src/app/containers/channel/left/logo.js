@@ -13,11 +13,12 @@ class Logo extends React.Component {
         this.getSpaces()
     }
     getSpaces = async () => {
-        const res = await React.$request.get('/dafang/space/user', {})
+        const res = await React.$request.get('/dafang/space/user')
         this.setState({ spaces: res.data })
         this.state.spaces.map(item => {
-            if (item.space.type === 0 && !React.db.ls.get("activeSpace")) {
-                React.db.ls.set("activeSpace", item)
+            if (item.space.type === 0) {
+                React.$store.dispatch(React.$actions.setActivedSpace(item.space))
+                // React.db.ls.set("activeSpace", item)
             }
         })
     }
