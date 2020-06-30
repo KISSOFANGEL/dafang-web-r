@@ -6,13 +6,20 @@ import './index.scss'
 import * as serviceWorker from './serviceWorker';
 import request from './plugin/request/index'
 import db from './plugin/db/index'
+import { Provider } from 'react-redux';
+import store from '@/redux/store'
+import {actions} from '@/redux/actions'
 
 React.$request = request
 React.db = db
+React.$store = store
+React.$actions = actions
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,26 +1,50 @@
-import React from 'react';
 import './index.scss';
+import React, { Component } from 'react';
 
-function Navi(props) {
-    return (
-        <div className="wrap-navigator">
-            <div className="left">
-                <div className="item active">概览</div>
-                <div className="item">项目管理</div>
-                <div className="item">设计资料</div>
-                <div className="iconfont iconaddboard"></div>
-            </div>
-            <div className="right">
-                <div className="iconfont iconchannel_search"></div>
-                <div className="iconfont iconFrame31"></div>
-                <div className="iconfont iconchannel_at"></div>
-                <div className="iconfont iconGroup597"></div>
-                <div className="iconfont iconchannel_setting"></div>
-                <div className="add">
+class Navi extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            curChannelId: -1,
+            panels: [],
+            activedPanel: 0
+        }
+    }
+    componentDidMount() {
+        React.$store.subscribe(this.handleChange)
+    }
+    handleChange = async () => {
+        let _curChannel = React.$store.getState().channel.activedChannel
+        if (this.state.curChannelId !== _curChannel.channel.id) {
+            this.setState({ panels: _curChannel.panelList, activedPanel: 0, curChannelId: _curChannel.channel.id })
+        }
+    }
+    render() {
+        const { panels, activedPanel } = this.state
+        return (
+            <div className="wrap-navigator">
+                <div className="left">
+                    {
+                        panels.map((panel, index) =>
+                            <div className={`item ${index === activedPanel && 'active'}`} key={index}>{panel.name}</div>
+                        )
+                    }
                     <div className="iconfont iconaddboard"></div>
                 </div>
+                <div className="right">
+                    <div className="iconfont iconchannel_search"></div>
+                    <div className="iconfont iconFrame31"></div>
+                    <div className="iconfont iconchannel_at"></div>
+                    <div className="iconfont iconGroup597"></div>
+                    <div className="iconfont iconchannel_setting"></div>
+                    <div className="add">
+                        <div className="iconfont iconaddboard"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    )
+        );
+    }
 }
-export default Navi
+
+export default Navi;
+

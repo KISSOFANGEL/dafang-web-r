@@ -4,34 +4,41 @@ export default class channelComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            channelTypee: props.type || 'active',
-            channel:props.channel||{}
+            channel: props.channel || {},
+            users: props.users || []
         }
     }
-    componentDidMount(){
-        console.log('fuxk')
+    componentDidMount() {
     }
     render() {
         const { channel } = this.state
+        const { type, users } = this.props
+        const active = type === 'active' || (users && users.length > 0)
+
         return (
             <div className="wrap-component-channel">
-                {this.state.channelTypee === 'active' &&
-                    <div className="card active">
+                {
+                    <div className={`card ${active && 'active'}`}>
                         <div className="title">
                             <div className="desc">{channel.name}</div>
-                            <div className="iconfont iconGroup296"></div>
+                            {active ? <div className="iconfont iconGroup296"></div> :
+                                <><div className="iconfont iconchannellist_people1"></div>
+                                    <div className="count number">{channel.memberNum}</div></>
+                            }
                         </div>
                         <div className="creater">
                             <div className="username"> Moyan</div>
                             <div className="point">.</div>
                             <div className="cratedon">刚刚更新</div>
                         </div>
-                        <div className="users">
-                            <img className="avatar" alt="avatar" src={require('@/static/avatar.png')} />
-                        </div>
+                        {
+                            active && <div className="users">
+                                <img className="avatar" alt="avatar" src={require('@/static/avatar.png')} />
+                            </div>
+                        }
                     </div>
                 }
-                {this.state.channelTypee === 'normal' &&
+                {/* {type=== 'normal' &&
                     <div className="card">
                         <div className="title">
                             <div className="desc">{channel.name}</div>
@@ -45,7 +52,7 @@ export default class channelComponent extends Component {
                         </div>
                     </div>
                 }
-                {this.state.channelTypee === 'outside' &&
+                {type === 'outside' &&
                     <div className="card">
                         <div className="title">
                             <div className="desc">{channel.name}</div>
@@ -58,7 +65,7 @@ export default class channelComponent extends Component {
                         </div>
                     </div>
                 }
-                {this.state.channelTypee === 'folder' &&
+                {type === 'folder' &&
                     <div className="card my">
                         <div className="title">
                             <div className="desc">未加入的频道</div>
@@ -70,7 +77,7 @@ export default class channelComponent extends Component {
                             <div className="tag">智能猫窝</div>
                         </div>
                     </div>
-                }
+                } */}
             </div>
         )
     }

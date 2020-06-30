@@ -2,11 +2,14 @@ import React from 'react';
 import './channels.scss'
 import { Link } from 'react-router-dom'
 import Channel from './channelComponent'
+import { connect } from 'react-redux';
+
 class Channels extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            channels: []
+            channels: [],
+            activedChannelInfo: {}
         }
     }
     componentDidMount() {
@@ -16,9 +19,15 @@ class Channels extends React.Component {
         let spaceid = React.db.ls.get("activeSpace") ? React.db.ls.get("activeSpace").space.id : -1
         let res = await React.$request.get(`/dafang/channel/list/${spaceid}`)
         this.setState({ channels: res.data.singleList })
+        this.setActiveChannel(this.state.channels[0])
+    }
+    setActiveChannel = async (channel) => {
+        let res = await React.$request.get(`/dafang/channel/info/${channel.id}`)
+        this.setState({ activedChannelInfo: res.data })
+        this.props.dispatch(React.$actions.setActivedChannel(res.data))
     }
     render() {
-        const { channels } = this.state
+        const { channels, activedChannelInfo, channel } = this.state
         return (
             <div className="wrap-cards">
                 <Link to="/channel/add">
@@ -31,7 +40,11 @@ class Channels extends React.Component {
                     </div>
                 </Link>
                 {
-                    channels.map((channel, index) => <Channel type={index === 0 ? 'active' : 'normal'} key={index} channel={channel}></Channel>)
+                    activedChannelInfo.channel &&
+                    channels.map((channel, index) =>
+                        <div onClick={e => this.setActiveChannel(channel)} key={index}>
+                            <Channel type={channel.id === activedChannelInfo.channel.id ? 'active' : 'normal'} channel={channel} users={channel.id === activedChannelInfo.channel.id ? activedChannelInfo.userList : []}></Channel>
+                        </div>)
                 }
 
                 {/* <Channel type={'normal'}></Channel>
@@ -43,4 +56,4 @@ class Channels extends React.Component {
     }
 }
 
-export default Channels
+export default connect()(Channels)
