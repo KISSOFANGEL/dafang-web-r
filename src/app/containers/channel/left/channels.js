@@ -19,8 +19,6 @@ class Channels extends React.Component {
     }
     getChannels = async () => {
         let _curSpace = React.$store.getState().space
-        console.log(_curSpace);
-        
         if (_curSpace && _curSpace.activedSpace.id !== this.state.curSpaceId) {
             let res = await React.$request.get(`/dafang/channel/list/${_curSpace.activedSpace.id}`)
             this.setState({ channels: res.data.singleList, curSpaceId: _curSpace.activedSpace.id })
@@ -30,7 +28,7 @@ class Channels extends React.Component {
     setActiveChannel = async (channel) => {
         let res = await React.$request.get(`/dafang/channel/info/${channel.id}`)
         this.setState({ activedChannelInfo: res.data })
-        this.props.dispatch(React.$actions.setActivedChannel(res.data))
+        React.$store.dispatch(React.$actions.setActivedChannel(res.data))
     }
     render() {
         const { channels, activedChannelInfo, channel } = this.state

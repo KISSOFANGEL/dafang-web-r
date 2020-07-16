@@ -1,8 +1,8 @@
-
 $theme-color: #ED6C00;
 $dangerous-color: #F72B44;
 $theme-color-light: #FA8919;
-$theme-color-lighter: #FFDA1A;;
+$theme-color-lighter: #FFDA1A;
+;
 $bg-calendar-task:#fbe2cc;
 $color-black:#000000;
 
@@ -31,9 +31,9 @@ $color-bd-input: #f0f0f0;
 
 // 背景色
 $color-bg-gray: rgba(255, 255, 255, 0.6);
-$color-bg-normal:  #F7F7F9;
+$color-bg-normal: #F7F7F9;
 
-$color-bg-base:  #f3f3f3;
+$color-bg-base: #f3f3f3;
 $color-bg-light: #f8f8f9;
 $color-bg-lighter: #fcfcfb;
 $color-white:#ffffff;
@@ -49,9 +49,11 @@ $color-gray7: rgba(9, 9, 61, 0.45);
 $color-gray6:rgba(6, 6, 61, 0.3);
 $color-gray3:rgba(2, 2, 82, 0.03);
 $color-gray4:rgba(2, 2, 82, 0.12);
-
+$color-gray2: rgba(92, 103, 255, 0.11);
+$color-gray1:rgba(2, 2, 82, 0.03);
 $color-blue3:rgba(116, 171, 255, 0.72);
 
 $shadow-1: 0px 2px 7px rgba(1, 1, 51, 0.06);
-$shadow-2: 0px 16px 40px rgba(1, 1, 51, 0.12), 0px 1px 4px rgba(1, 1, 51, 0.04);
+$shadow-2: 0px 16px 40px rgba(1, 1, 51, 0.12),
+0px 1px 4px rgba(1, 1, 51, 0.04);
 $shadow-3: 0px 4px 12px rgba(255, 218, 26, 0.3);

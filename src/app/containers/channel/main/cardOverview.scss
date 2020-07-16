@@ -1,33 +1,35 @@
-.wrap-card {
-    background-color: $color-white;
-    // padding: 24px 24px 28px 24px;
-    border-radius: 8px;
-    // width: 566px;
-    height: 360px;
-    box-shadow: $shadow-1;
+.wrap-module {
 
-    .pic {
-        width: 518px;
-        height: 198px;
+    // border-radius: 8px;
+    // height: 360px;
+    @include flex(row);
+    color: $color-gray8;
+
+    span::selection {
+        background-color: $color-gray2;
     }
 
-    .channelname {
-        margin-top: 32px;
-        font-weight: 600;
-        font-size: 20px;
-        color: $color-gray9;
-    }
-
-    .desc {
-        margin-top: 16px;
-        font-size: 14px;
-        color: $color-gray8;
-        width: 523px;
-        line-height: 2rem;
-
-        span {
-            border-bottom: 2px solid $theme-color-lighter;
+    .card {
+        width: 33.8125rem;
+        height: 20.875rem;
+        border-radius: .5rem;
+        background-color: $color-white;
+        box-shadow: $shadow-1;
+        margin-right: 20px;
+        padding: .5rem 1.5rem;
+        overflow: scroll;
+        &.pre {
+            background-color: $color-gray1;
+            opacity: 0.8;
 
         }
+
+
+        .DraftEditor-root,
+        .DraftEditor-editorContainer,
+        .public-DraftEditor-content {
+            height: 100%;
+        }
+
     }
 }

@@ -1,7 +1,11 @@
 .wrap-main {
     @include flex(row);
+
+    .pop {
+        position: absolute;
+    }
 }
 
-.card-file {
-    margin-left: 20px;
-}
+// .card-file {
+//     margin-left: 20px;
+// }

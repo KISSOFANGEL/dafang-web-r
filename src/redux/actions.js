@@ -12,6 +12,11 @@ _actions.setActivedSpace = (space) => ({
     type: types.SET_ACTIVED_SPACE,
     data: { 'activedSpace': space }
 })
+// 当前激活的Panel
+_actions.setActivedPanel= (panel) => ({
+    type: types.SET_ACTIVED_PANEL,
+    data: { 'activedPanel': panel }
+})
 
 
 export const actions = { ..._actions }
