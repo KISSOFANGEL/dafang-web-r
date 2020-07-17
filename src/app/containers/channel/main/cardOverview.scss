@@ -30,6 +30,10 @@
         .public-DraftEditor-content {
             height: 100%;
         }
+        .public-DraftEditorPlaceholder-inner{
+            color: $color-gray6;
+            font-size: .875rem;
+        }
         .empty-rich-text{
             margin-top: 6.25rem;
             cursor: pointer;

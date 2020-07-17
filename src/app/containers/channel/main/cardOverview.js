@@ -8,8 +8,10 @@ class Channels extends React.Component {
         super(props)
         this.state = {
             editorState: EditorState.createEmpty(),
-            isEmpty: false
+            isEmpty: false,
+            richTextContent: ''
         }
+        this.editorRef = React.createRef();
     }
     componentDidMount() {
         this.getModuleContent(this.props.module.id)
@@ -31,16 +33,21 @@ class Channels extends React.Component {
         if (this.props.module.type === 1 && content)
             this.setState({ editorState: EditorState.createWithContent(convertFromRaw(content)) })
         let text = this.state.editorState.getCurrentContent().getPlainText();
-        this.setState({ isEmpty: !text })
+        this.setState({ isEmpty: !text, richTextContent: text })
     }
     createRichText = (e) => {
         e.stopPropagation();
-
+        this.setState({ isEmpty: false })
+        setTimeout(() => {
+            this.editorRef.current.focus()
+        }, 0);
     }
     clickOutside = () => {
-        // console.log('clickout side');
-
+        if (this.state.editorState.getCurrentContent().getPlainText()) return
+        this.setState({ isEmpty: true })
     }
+   
+
     render() {
         let { module } = this.props
         let { editorState, isEmpty } = this.state
@@ -50,9 +57,10 @@ class Channels extends React.Component {
                     {
                         <div className="card">
                             {module.type === 1 && !isEmpty && <Editor
+                            ref={this.editorRef} 
                                 editorState={editorState}
                                 onChange={e => this.onChange(e, module)}
-                            // placeholder="输入文本或插入图片"
+                            placeholder="输入文本或插入图片"
                             />}
                             {module.type === 1 && isEmpty &&
                                 <div className="empty-rich-text" >
