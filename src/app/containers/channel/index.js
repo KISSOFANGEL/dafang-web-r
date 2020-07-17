@@ -9,7 +9,7 @@ function Channels(props) {
             <div className="left">
                 <Left />
             </div>
-            <div className="main">
+            <div className="right">
                 <Navi />
                 <div className="cards"><Main /></div>
             </div>

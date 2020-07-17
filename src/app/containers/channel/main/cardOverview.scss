@@ -30,6 +30,20 @@
         .public-DraftEditor-content {
             height: 100%;
         }
+        .empty-rich-text{
+            margin-top: 6.25rem;
+            cursor: pointer;
+            @include flex(column,center,center);
+            i{
+                color:$color-gray4;
+                font-size: 5.5rem;
+            }
+            .desc{
+                color:$color-gray6;
+                font-size: .875rem;
+                margin-top: 1rem;
+            }
+        }
 
     }
 }
