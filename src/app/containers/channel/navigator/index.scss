@@ -3,7 +3,7 @@
     padding-left: .625rem;
 
     .left,
-    .right {
+    &-right {
         @include flex(row, flex-start, center);
     }
 
@@ -23,7 +23,7 @@
         color: $color-gray10;
     }
 
-    .right {
+    &-right {
         color: $color-gray8;
 
         .iconfont {

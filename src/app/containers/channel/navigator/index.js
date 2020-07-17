@@ -36,7 +36,7 @@ class Navi extends Component {
                     }
                     <div className="iconfont iconaddboard"></div>
                 </div>
-                <div className="right">
+                <div className="wrap-navigator-right">
                     <div className="iconfont iconchannel_search"></div>
                     <div className="iconfont iconFrame31"></div>
                     <div className="iconfont iconchannel_at"></div>
