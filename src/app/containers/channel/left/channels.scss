@@ -1,0 +1,26 @@
+.wrap-cards {
+    height: calc(100vh - 10.5rem);
+    overflow-y: scroll;
+    .add-channel {
+        border-radius: 32px;
+        box-sizing: border-box;
+        width: 188px;
+        height: 104px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        border: 1px dashed rgba(6, 6, 61, 0.3);
+        @include flex(row, center, center);
+        color: $color-gray6;
+        font-size: 16px;
+        background-color: transparent;
+        .btn {
+            @include flex(row, center, center);
+            height: 24px;
+            .desc {
+                margin-left: 8px;
+                font-size: 16px;
+                color: $color-gray7;
+            }
+        }
+    }
+}

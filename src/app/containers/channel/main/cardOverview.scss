@@ -1,0 +1,53 @@
+.wrap-module {
+
+    // border-radius: 8px;
+    // height: 360px;
+    @include flex(row);
+    color: $color-gray8;
+
+    span::selection {
+        background-color: $color-gray2;
+    }
+
+    .card {
+        width: 33.8125rem;
+        height: 20.875rem;
+        border-radius: .5rem;
+        background-color: $color-white;
+        box-shadow: $shadow-1;
+        margin-right: 20px;
+        padding: .5rem 1.5rem;
+        overflow: scroll;
+        &.pre {
+            background-color: $color-gray1;
+            opacity: 0.8;
+
+        }
+
+
+        .DraftEditor-root,
+        .DraftEditor-editorContainer,
+        .public-DraftEditor-content {
+            height: 100%;
+        }
+        .public-DraftEditorPlaceholder-inner{
+            color: $color-gray6;
+            font-size: .875rem;
+        }
+        .empty-rich-text{
+            margin-top: 6.25rem;
+            cursor: pointer;
+            @include flex(column,center,center);
+            i{
+                color:$color-gray4;
+                font-size: 5.5rem;
+            }
+            .desc{
+                color:$color-gray6;
+                font-size: .875rem;
+                margin-top: 1rem;
+            }
+        }
+
+    }
+}

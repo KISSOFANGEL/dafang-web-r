@@ -1,0 +1,19 @@
+.wrap-add-channel {
+    height: 100%;
+    overflow: hidden;
+    @include flex(column);
+
+    .close {
+        color: $color-gray4;
+        width: 100%;
+        @include flex(row, flex-end);
+
+        .iconfont {
+            margin-top: 4.0625rem;
+            margin-right: 5rem;
+        }
+    }
+
+
+
+}

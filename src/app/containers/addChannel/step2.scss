@@ -1,0 +1,76 @@
+.wrap-addchannel-step2 {
+    margin: 6.125rem 0 0 10rem;
+    @include flex(row);
+
+    .channel-name {
+        @include flex(row, flex-start, center);
+
+        .iconfont {
+            color: $color-gray7;
+            font-size: 1.875rem;
+        }
+
+        .name {
+            margin-left: 1rem;
+            color: $color-gray9;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+    }
+
+    .set-pannel-desc {
+        margin-top: 4.5rem;
+        color: $color-gray8;
+        font-size: 3.5rem;
+        font-weight: 300;
+    }
+
+    .pannels {
+        margin-top: 3.5rem;
+        width: 34.5rem;
+        @include flex(row);
+        flex-wrap: wrap;
+
+        .pannel {
+            margin-right: 4rem;
+            margin-bottom: 3.5625rem;
+
+            .flex {
+                margin-top: 1rem;
+            }
+
+            .name {
+                font-size: 1rem;
+                color: $color-gray8;
+                margin-left: .625rem;
+            }
+
+            .template>img {
+                width: 120px;
+                height: 84px;
+            }
+        }
+
+    }
+
+    .crateBtn {
+        margin-top: 3.75rem;
+        width: 9.75rem;
+        height: 3.5rem;
+        @include flex(row, center, center);
+        border: .09375rem solid $theme-color-lighter;
+        border-radius: 1.25rem;
+        box-sizing: border-box;
+        color: $color-gray9;
+        font-weight: 500;
+
+        &.active {
+            background-color: $theme-color-lighter;
+        }
+    }
+
+    .overview {
+        margin: 0 0 0 8.5rem;
+        
+    }
+}

@@ -1,0 +1,29 @@
+.wrap-login {
+    height: 100%;
+    background: url('../../static/login/login_background.png') no-repeat fixed;
+    @include flex(column,center,center);
+    // z-index: -1;
+    background-size: cover;
+    .step1{
+        @include flex(column,center,center);
+    }
+    .slogan {
+        color: $color-white;
+        font-weight: 500;
+        font-size: 3.5rem;
+    }
+    .loginbtn{
+        background-color: $theme-color-lighter;
+        box-shadow: $shadow-3;
+        border-radius: 1.25rem;
+        font-weight: 500;
+        font-size: 16px;
+        @include flex(row,center,center);
+        color: $color-gray9;
+        width: 10rem;
+        height: 3.5rem;
+        margin-top: 3.5rem;
+        cursor: pointer;
+    }
+  
+}

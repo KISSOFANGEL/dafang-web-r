@@ -1,0 +1,19 @@
+.container-main {
+    height: 100%;
+    background-color: $color-bg-normal;
+    @include flex(row);
+
+    .right {
+        height: 100%;
+        margin-top: 31px;
+
+        // flex: 1;
+        // padding-right: 36px;
+        // @include flex(column);
+        .cards {
+            margin-top: 30px;
+            height: 100%;
+        }
+    }
+
+}

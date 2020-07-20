@@ -1,0 +1,84 @@
+.wrap-addchannel-step1-main {
+    margin: 200px 0 0 149px;
+
+    .input {
+        margin-left: -80px;
+
+        input {
+            max-width: 42.5rem;
+            margin-left: 10px;
+            height: 6.25rem;
+            font-size: 3.5rem;
+            caret-color: $color-gray8;
+            color: $color-gray9;
+            font-weight: 500;
+
+        }
+
+        .preicon {
+            width: 60px;
+
+            .iconfont {
+                font-size: 60px;
+                color: $color-gray7;
+            }
+        }
+
+        @include flex(row, flex-start, center);
+
+        .next {
+            @include flex(row, center, center);
+            margin-left: 6.25rem;
+            background-color: $theme-color-lighter;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 1.25rem;
+
+            .iconfont {
+                font-size: 1.75rem;
+            }
+        }
+    }
+
+    ::placeholder {
+        // font-size: 3.5rem;
+        height: 6.25rem;
+        line-height: 6.25rem;
+        color: $color-gray6;
+        padding-left: 8px;
+        font-weight: normal;
+    }
+
+    .msg {
+        @include flex(row, flex-start, center);
+
+        .desc {
+            margin-left: 2rem;
+            font-size: .875rem;
+            color: $color-gray7;
+        }
+    }
+
+    .suggestion {
+        margin-top: 9.625rem;
+
+        .desc {
+            color: $color-gray7;
+            font-weight: 500;
+        }
+
+        .channels {
+            width: 43.75rem;
+            @include flex(row);
+            margin-top: 2.5rem;
+            overflow-y: scroll;
+            height: 25rem;
+            flex-wrap: wrap;
+
+            .channel {
+                margin: 0 2.5rem 2.5rem 0;
+            }
+        }
+    }
+
+}

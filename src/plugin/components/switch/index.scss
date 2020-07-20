@@ -1,0 +1,28 @@
+.wrap-switch {
+    width: 4.625rem;
+    height: 27px;
+    background-color: $color-gray8;
+    font-size: .75rem;
+    border-radius: 1.875rem;
+    color: $color-white;
+    
+    @include flex(row-reverse,space-between,center);
+    .circle {
+        width: 1.5625rem;
+        height: 1.5625rem;
+        border-radius: 50%;
+        background-color: $color-white;
+        margin: 0 1px;
+    }
+    .switch-desc{
+        margin-right: .9375rem;
+        transition:  all .5s
+    }
+    &.is-on{
+        flex-direction: row;
+        .switch-desc{
+            margin-right: 0;
+            margin-left: .875rem;
+        }
+    }
+}
