@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
 class space extends Component {
     constructor(props) {
@@ -15,6 +16,14 @@ class space extends Component {
         React.db.ls.set("activeSpace", item)
         this.setState({ activeSpace: item })
     }
+
+    loginOut = () => {
+        React.db.ls.remove("activeSpace")
+        React.db.ls.remove("userToken")
+        this.props.history.push("/login");
+    }
+
+
     render() {
         const { spaces } = this.props
         const { activeSpace } = this.state
@@ -42,7 +51,7 @@ class space extends Component {
                     <div className="setting">
                         <div className="set">设置</div>
                         <div className="set">帮助</div>
-                        <div className="set logoout">退出登录</div>
+                        <div className="set logoout cursor" onClick={this.loginOut}>退出登录</div>
                     </div>
                 </div>
             </>
@@ -50,4 +59,4 @@ class space extends Component {
     }
 }
 
-export default space;
+export default withRouter(space);
