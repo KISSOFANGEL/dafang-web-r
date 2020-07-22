@@ -39,7 +39,7 @@ class step2 extends Component {
     createChannel = async () => {
         let panelTemplateIds = this.state.templates.map(a => a.id)
         let params = { channel: { name: this.props.channel.channelName, type: Number(this.props.channel.isPrivate) }, panelTemplateIds }
-        let res = await React.$request.post(`/dafang/channel/create/${React.db.ls.get('activeSpace').space.id}`, params)
+        let res = await React.$request.post(`/dafang/channel/create/${React.$store.getState().space.activedSpace.id}`, params)
         if (res.code === 1) this.props.history.push("/");
     }
     render() {
