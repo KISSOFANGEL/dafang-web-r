@@ -18,5 +18,10 @@ _actions.setActivedPanel= (panel) => ({
     data: { 'activedPanel': panel }
 })
 
+// 是否显示蒙层
+_actions.setMask = (mask) => ({
+    type: types.SET_MASK,
+    data: { 'mask': mask }
+})
 
 export const actions = { ..._actions }

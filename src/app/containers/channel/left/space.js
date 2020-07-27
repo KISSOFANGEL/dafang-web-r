@@ -23,6 +23,9 @@ class space extends Component {
         this.props.history.push("/login");
     }
 
+    createSpace = () => {
+        React.$store.dispatch(React.$actions.setMask("show"))
+    }
 
     render() {
         const { spaces } = this.props
@@ -45,7 +48,7 @@ class space extends Component {
                         }
                     </div>
                     <div className="create">
-                        <div className="create-space">创建团队空间</div>
+                        <div className="create-space cursor" onClick={this.createSpace}>创建团队空间</div>
                         <div className="line"></div>
                     </div>
                     <div className="setting">

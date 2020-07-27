@@ -23,7 +23,15 @@ function panel(state = 0, action) {
     }
 }
 
+function mask(state = 0, action) {
+    switch (action.type) {
+        case types.SET_MASK:
+            return action.data
+        default: return state
+    }
+}
+
 const Reducer = combineReducers({
-    channel, space, panel
+    channel, space, panel, mask
 })
 export default Reducer

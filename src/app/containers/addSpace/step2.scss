@@ -1,0 +1,55 @@
+.input-space-name{
+    position: absolute;
+    left: 118px;
+    top: 200px;
+    height: 40px;
+    width: 260px;
+
+    // font-family: PingFang SC;
+    // font-style: normal;
+    // font-weight: normal;
+    font-size: 32px;
+    line-height: 40px;
+    caret-color: $color-gray8;
+    color: $color-gray9;
+
+
+}
+
+.button-space-name{
+    position: absolute;
+    left: 202px;
+    top: 404px;
+    
+
+    background:$theme-color-lighter;
+    border-radius: 20px;
+}
+
+
+.next {
+    // @include flex(row, center, center);
+    position: absolute;
+    background-color: $theme-color-lighter;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1.25rem;
+    left: 202px;
+    top: 464px;
+    
+    .iconfont {
+        position: absolute;
+        font-size: 1.75rem;
+        top: 15px;
+        left: 13px;
+    }
+}
+
+::placeholder {
+        // font-size: 3.5rem;
+        height: 6.25rem;
+        line-height: 6.25rem;
+        color: $color-gray6;
+        padding-left: 8px;
+        font-weight: normal;
+    }
