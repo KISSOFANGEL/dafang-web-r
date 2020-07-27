@@ -1,5 +1,6 @@
 .wrap-main {
     @include flex(row);
+    flex-wrap: wrap;
     height: 100%;
     .pop {
         position: absolute;

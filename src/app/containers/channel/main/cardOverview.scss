@@ -15,9 +15,10 @@
         border-radius: .5rem;
         background-color: $color-white;
         box-shadow: $shadow-1;
-        margin-right: 20px;
+        margin: 20px 20px 0 0;
         padding: .5rem 1.5rem;
         overflow: scroll;
+
         &.pre {
             background-color: $color-gray1;
             opacity: 0.8;
@@ -30,24 +31,31 @@
         .public-DraftEditor-content {
             height: 100%;
         }
-        .public-DraftEditorPlaceholder-inner{
+
+        .public-DraftEditorPlaceholder-inner {
             color: $color-gray6;
             font-size: .875rem;
         }
-        .empty-rich-text{
+
+        .empty-rich-text {
             margin-top: 6.25rem;
             cursor: pointer;
-            @include flex(column,center,center);
-            i{
-                color:$color-gray4;
+            @include flex(column, center, center);
+
+            i {
+                color: $color-gray4;
                 font-size: 5.5rem;
             }
-            .desc{
-                color:$color-gray6;
+
+            .desc {
+                color: $color-gray6;
                 font-size: .875rem;
                 margin-top: 1rem;
             }
         }
 
+    }
+    .toolbar {
+        position: absolute;
     }
 }

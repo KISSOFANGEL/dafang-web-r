@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './index.scss';
 import CreateModulePop from './createModule'
 import CardOverview from './cardOverview.js'
+
 export default class Main extends Component {
   constructor(props) {
     super(props)
@@ -38,6 +39,7 @@ export default class Main extends Component {
     const activedPanel = React.$store.getState().panel.activedPanel
     let module = { name: v.text, type: v.type }
     await React.$request.post(`/dafang/module/create/${activedPanel.id}`, { ...module })
+    await this.getModules()
   }
   render() {
     let { clientX, clientY, showpre, modules } = this.state
@@ -49,7 +51,8 @@ export default class Main extends Component {
         {clientX > 0 && clientY > 0 && <div className="pop" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }} onMouseEnter={() => this.activeModule(true)} onMouseLeave={() => this.activeModule(false)} >
           <CreateModulePop confirm={e => this.createConfirm(e)} />
         </div>}
-
+       
+       
       </div >
     )
   }
