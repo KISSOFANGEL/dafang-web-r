@@ -35,6 +35,7 @@ export default class Main extends Component {
     this.setState({ showpre: v })
 
   }
+ 
   createConfirm = async v => {
     const activedPanel = React.$store.getState().panel.activedPanel
     let module = { name: v.text, type: v.type }
@@ -46,7 +47,7 @@ export default class Main extends Component {
     return (
       <div className="wrap-main" onDoubleClick={this.dbclick} onClick={this.resetPop}>
         {modules.map((m, i) =>
-          <CardOverview module={m} key={i} />)
+          <CardOverview module={m} key={i} getModules = {()=>{this.getModules()}}/>)
         }
         {clientX > 0 && clientY > 0 && <div className="pop" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }} onMouseEnter={() => this.activeModule(true)} onMouseLeave={() => this.activeModule(false)} >
           <CreateModulePop confirm={e => this.createConfirm(e)} />

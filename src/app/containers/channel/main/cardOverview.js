@@ -3,7 +3,7 @@ import { Editor, EditorState, convertToRaw, convertFromRaw, RichUtils } from 'dr
 import './cardOverview.scss'
 import Toolbar from './toolbar'
 import OutsideClickHandler from 'react-outside-click-handler';
-
+import RightClickMenu from './rightClickMenu'
 class Channels extends React.Component {
     constructor(props) {
         super(props)
@@ -13,7 +13,8 @@ class Channels extends React.Component {
             richTextContent: '',
             showToolbar: false,
             clientX: 0,
-            clientY: 0
+            clientY: 0,
+            showRightclickMenu: false
 
         }
         this.editorRef = React.createRef();
@@ -51,7 +52,7 @@ class Channels extends React.Component {
     }
     clickOutside = () => {
         if (this.state.editorState.getCurrentContent().getPlainText()) return
-        this.setState({ isEmpty: true, showToolbar: false })
+        this.setState({ isEmpty: true, showToolbar: false, showRightclickMenu: false })
     }
     // 切换块级样式
     toggleBlockType = (blockType) => {
@@ -69,13 +70,32 @@ class Channels extends React.Component {
             default: return null;
         }
     }
+    //右键菜单
+    contextMenu = e => {
+        e.preventDefault();
+        let { clientX, clientY } = e
+        this.setState({ clientX, clientY })
+
+        this.setState({ showRightclickMenu: !this.state.showRightclickMenu })
+    }
+    // 右键菜单点击
+    rcBack = (e) => {
+        switch (e) {
+            case 'del': this.delModule(this.props.module.id)
+        }
+
+    }
+    delModule = async (id) => {
+        let res = await React.$request.delete(`/dafang/module/${id}`)
+        this.props.getModules()
+    }
 
     render() {
         let { module } = this.props
-        let { editorState, isEmpty, showToolbar, clientX, clientY } = this.state
+        let { editorState, isEmpty, showToolbar, clientX, clientY, showRightclickMenu } = this.state
         return (
             <OutsideClickHandler onOutsideClick={this.clickOutside}>
-                <div className="wrap-module" onDoubleClick={e => this.createRichText(e)}>
+                <div className="wrap-module" onDoubleClick={e => this.createRichText(e)} onContextMenu={(e) => this.contextMenu(e)} >
                     {
                         <div className="card">
                             {module.type === 1 && !isEmpty && <Editor
@@ -96,6 +116,10 @@ class Channels extends React.Component {
                     <div className="toolbar" style={{ marginLeft: 20 + "px", marginTop: 75 + "px" }} >
                         {showToolbar && <Toolbar handleCK={this.toggleBlockType} />}
                     </div>
+                    <div className="right-click-menu" style={{ left: clientX + 10 + "px", top: clientY + 10 + "px" }}>
+                        {<RightClickMenu show={showRightclickMenu} rcBack={e => this.rcBack(e)}></RightClickMenu>}
+                    </div>
+
                     {
                         // showPre && <div className="pre card"></div>
                     }

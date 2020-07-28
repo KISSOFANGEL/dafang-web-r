@@ -1,0 +1,19 @@
+.wrap-right-click-menu {
+    width: 8.75rem;
+    color: $color-white;
+    background-color: #000000;
+    border-radius: .25rem;
+    padding: 1rem;
+    
+    .item {
+        padding-left: 1.125rem;
+        @include flex(row, flex-start, center);
+        font-size: 12px;
+        // line-height: 1.0625rem;
+        // margin-top: 1rem;
+        cursor: pointer;
+        .desc {
+            margin-left: 10px;
+        }
+    }
+}
