@@ -5,8 +5,9 @@ export default class rightClickMenu extends Component {
     constructor(props) {
         super(props)
     }
-    clickOutside = () => {
-
+    clickOutside = (e) => {
+        if (e.button !== 2)
+            this.props.toggleShow()
     }
     render() {
         let { show, rcBack } = this.props

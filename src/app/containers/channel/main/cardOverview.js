@@ -73,9 +73,9 @@ class Channels extends React.Component {
     //右键菜单
     contextMenu = e => {
         e.preventDefault();
+        e.stopPropagation()
         let { clientX, clientY } = e
         this.setState({ clientX, clientY })
-
         this.setState({ showRightclickMenu: !this.state.showRightclickMenu })
     }
     // 右键菜单点击
@@ -88,6 +88,11 @@ class Channels extends React.Component {
     delModule = async (id) => {
         let res = await React.$request.delete(`/dafang/module/${id}`)
         this.props.getModules()
+    }
+    toggleShowRightClickMenu = () => {
+        this.setState({
+            showRightclickMenu: false
+        })
     }
 
     render() {
@@ -117,7 +122,7 @@ class Channels extends React.Component {
                         {showToolbar && <Toolbar handleCK={this.toggleBlockType} />}
                     </div>
                     <div className="right-click-menu" style={{ left: clientX + 10 + "px", top: clientY + 10 + "px" }}>
-                        {<RightClickMenu show={showRightclickMenu} rcBack={e => this.rcBack(e)}></RightClickMenu>}
+                        {<RightClickMenu show={showRightclickMenu} rcBack={e => this.rcBack(e)} toggleShow={() => { this.toggleShowRightClickMenu() }} ></RightClickMenu>}
                     </div>
 
                     {
