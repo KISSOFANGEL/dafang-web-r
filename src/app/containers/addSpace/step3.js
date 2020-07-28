@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './step3.scss'
-import Left from '../channel/left';
+import { withRouter } from "react-router-dom";
 
-export default class AddSpaceStep3 extends Component{
+ class AddSpaceStep3 extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -26,6 +26,15 @@ export default class AddSpaceStep3 extends Component{
 
     }
 
+    createSpace = async (spaceName_) => {
+        
+        let params = { name: spaceName_, type: Number(1) } 
+        let res = await React.$request.post(`/dafang/space/`, params)
+        if (res.code === 1) {
+            React.$store.dispatch(React.$actions.setMask("change"))
+            // this.props.history.push("/"); //
+        }
+    }
     render(){
         const { selectMsg, url, checked, backgroundColor, divLeft} = this.state
         const { spaceName } = this.props;
@@ -47,7 +56,7 @@ export default class AddSpaceStep3 extends Component{
                     </div>
                     <img className={`check ${divLeft}`}   src={require('@/static/add-space/check.png')} alt="选择团队标识一"></img>
                     
-                    <button className='complete-button' >
+                    <button className='complete-button' onClick={() => this.createSpace(spaceName.spaceName)} >
                         <p>完成创建</p>
                     </button>
                 </div>
@@ -66,3 +75,5 @@ export default class AddSpaceStep3 extends Component{
         )
     }
 }
+
+export default withRouter(AddSpaceStep3);

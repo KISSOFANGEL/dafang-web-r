@@ -24,7 +24,7 @@ class space extends Component {
     }
 
     createSpace = () => {
-        React.$store.dispatch(React.$actions.setMask("show"))
+        React.$store.dispatch(React.$actions.setMask("change"))
     }
 
     render() {

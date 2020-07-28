@@ -21,7 +21,7 @@ export default class Channels extends React.Component{
         React.$store.subscribe(() => {
             let show = React.$store.getState().mask
            
-            if (show.mask === "show"){
+            if (show.mask === "change"){
                 this.changeMask()
             }
 
