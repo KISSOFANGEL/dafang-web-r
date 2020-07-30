@@ -10,7 +10,9 @@ export default class index extends Component{
         super(props)
         this.state = {
             curStep: 1,
-            spaceName: ''
+            spaceName: '',
+            checked:0
+
         }
     }
     next = (nextPage,spaceName) => {
@@ -19,12 +21,18 @@ export default class index extends Component{
             spaceName: spaceName
         })
     }
+
+    setCheck = (e , checked) => {
+        this.setState({
+            checked: checked
+        })
+    }
     render(){
-        const { curStep, spaceName} = this.state
+        const { curStep, spaceName,checked} = this.state
         return(
             <div className='mask' >
                 <div className='wrap-add-space'>
-                    <div className='close iconfont iconclose pointer' onClick={this.props.changeMask}></div>
+                    <div className={`close iconfont iconclose pointer ${checked === 1 ? 'close-color' : ''}`} onClick={this.props.changeMask}></div>
                     {curStep === 1 &&
                         <AddSpaceStep1 nextStep={v => { this.next(2,v) }}></AddSpaceStep1>
 
@@ -35,7 +43,7 @@ export default class index extends Component{
                     }
 
                     {curStep === 3 &&
-                        <AddSpaceStep3 spaceName={spaceName}></AddSpaceStep3>
+                        <AddSpaceStep3 spaceName={spaceName}  parent={this}></AddSpaceStep3>
 
                     }
                 </div>

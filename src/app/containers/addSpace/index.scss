@@ -4,7 +4,8 @@
     width: 460px;
     height: 600px;
     left: 40%;
-    top: 25%;
+    top: 50%;
+    transform: translateY(-50%);
 
     background: $color-white;
 
@@ -23,10 +24,16 @@
 }
 
 .close {
-    color: $color-gray4;
-    width: 92%;
-    position: relative;
+    color: rgba(229, 223, 229, 0.3);
+    width: 20px;
+    position: absolute;
     top: 50px;
-    text-align: right;
+    left: 380px;
+    text-align: center;
     z-index: 2;
+}
+
+.close-color{
+  color: rgba(2, 2, 82, 0.12);
+
 }

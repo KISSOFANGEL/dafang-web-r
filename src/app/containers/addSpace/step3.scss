@@ -1,9 +1,5 @@
 .wrap-step3-head{
-    position: absolute;
-    width: 460px;
     height: 304px;
-    left: 0;
-    top: 0;
     z-index: 1;
    
     border-radius: 8px;
@@ -75,7 +71,7 @@
 .div-img{
     position: relative;
     height: 50px;
-    width: 100%;
+    // width: 100%;
     top: 56px;
     text-align: center;
     //  border: solid 1px red;
@@ -93,28 +89,28 @@
     width: 30px;
     height: 30px;
     margin: 19px;
-    border: blue 1px solid;
+    // border: blue 1px solid;
     position: absolute;
   
     top: 55px;
 }
 
-.dev_left1{
+.dev_left0{
    left: 60px; 
 }
-.dev_left2{
+.dev_left1{
    left: 127px;
 }
 
-.dev_left3{
+.dev_left2{
    left: 196px;
 }
 
-.dev_left4{
+.dev_left3{
    left: 266px; 
 }
 
-.dev_left5{
+.dev_left4{
    left: 332px; 
 }
 

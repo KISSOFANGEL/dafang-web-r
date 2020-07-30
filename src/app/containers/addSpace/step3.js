@@ -8,9 +8,9 @@ import { withRouter } from "react-router-dom";
         this.state = {
             selectMsg: '为团队选择一个标识',
             url:'http://localhost:3000',
-            checked:'1',
-            backgroundColor: "#481A49",
-            divLeft: 'dev_left1'
+            checked:0,
+            divLeft: 'dev_left0',
+            backgroundColors: ["#481A49", "#F1F1E7", "#041177", "#EB3458", "#2A166B"]
         }
 
         // this.changeChecked = this.changeChecked.bind(this)
@@ -23,7 +23,7 @@ import { withRouter } from "react-router-dom";
             divLeft:left
         })
        
-
+        this.props.parent.setCheck(this,checked)
     }
 
     createSpace = async (spaceName_) => {
@@ -36,23 +36,24 @@ import { withRouter } from "react-router-dom";
         }
     }
     render(){
-        const { selectMsg, url, checked, backgroundColor, divLeft} = this.state
+        const { selectMsg, url, checked, divLeft, backgroundColors} = this.state
         const { spaceName } = this.props;
+
         return(
             <div>
-                <div className="wrap-step3-head" style={{background:backgroundColor}} >
-                    <p className={`p-space-name ${checked === '2' ? 'p-space-name-color' : ''}`} >{spaceName.spaceName || '次世代开发团队'}</p>
+                <div className="wrap-step3-head" style={{ background: backgroundColors[checked]}} >
+                    <p className={`p-space-name ${checked === 1 ? 'p-space-name-color' : ''}`} >{spaceName.spaceName || '次世代开发团队'}</p>
 
-                    <p className={`p-space-msg ${checked === '2' ? 'p-space-msg-color' : ''}`}>{selectMsg}</p>
+                    <p className={`p-space-msg ${checked === 1 ? 'p-space-msg-color' : ''}`}>{selectMsg}</p>
                 </div>
                 <div className="wrap-step3-foot">
                     <div className="div-img">
-                        <img className='mark' onClick={(e) => this.changeChecked("1", "#481A49","dev_left1", e)} src={require('@/static/add-space/image1.png')} alt="团队标识一"></img>
-                        <img className='mark' onClick={(e) => this.changeChecked("2", "#F1F1E7", "dev_left2", e)} src={require('@/static/add-space/image2.png')} alt="团队标识二"></img>
-                        <img className='mark' onClick={(e) => this.changeChecked("3", "#041177", "dev_left3", e)} src={require('@/static/add-space/image3.png')} alt="团队标识三"></img>
-                        <img className='mark' onClick={(e) => this.changeChecked("4", "#EB3458", "dev_left4", e)} src={require('@/static/add-space/image4.png')} alt="团队标识四"></img>
-                        <img className='mark' onClick={(e) => this.changeChecked("5", "#2A166B", "dev_left5", e)} src={require('@/static/add-space/image5.png')} alt="团队标识五"></img>
-                        
+                        {
+                            backgroundColors.map((item,index) => {
+                                return <img key={index} className='mark' onClick={(e) => this.changeChecked( index , item, "dev_left" +  index , e)} src={require(`@/static/add-space/image${index + 1}.png`)} alt="团队标识"></img>
+                            })
+                        }
+
                     </div>
                     <img className={`check ${divLeft}`}   src={require('@/static/add-space/check.png')} alt="选择团队标识一"></img>
                     
