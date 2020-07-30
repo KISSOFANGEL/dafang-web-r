@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
-
+import Modal from '&/modal/modal.js'
+import AddSpace from '@/app/containers/addSpace'
 class space extends Component {
     constructor(props) {
         super(props)
         this.state = {
             // activeSpace: React.db.ls.get("activeSpace")
-            activeSpace: { space: React.$store.getState().space.activedSpace }
+            activeSpace: { space: React.$store.getState().space.activedSpace },
+            visible: false
+
         }
     }
+    hide = () => {
+        this.setState({
+            visible: false
+        })
+    };
+    ok = () => {
+        console.log("ojbk")
+    };
+    cancel = () => {
+        console.log("cancel")
+    };
     componentDidMount() {
 
     }
@@ -24,7 +38,10 @@ class space extends Component {
     }
 
     createSpace = () => {
-        React.$store.dispatch(React.$actions.setMask("change"))
+        this.setState({
+            visible: true
+        })
+        // React.$store.dispatch(React.$actions.setMask("change"))
     }
 
     render() {
@@ -57,6 +74,13 @@ class space extends Component {
                         <div className="set logoout cursor" onClick={this.loginOut}>退出登录</div>
                     </div>
                 </div>
+                <Modal visible={this.state.visible}
+                    hide={this.hide}
+                    onOK={this.ok}
+                    onCancel={this.cancel}
+                    title="温馨提示">
+                    <AddSpace></AddSpace>
+                </Modal>
             </>
         );
     }
