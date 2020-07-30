@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './index.scss';
 import CreateModulePop from './createModule'
 import CardOverview from './cardOverview.js'
-
 export default class Main extends Component {
   constructor(props) {
     super(props)
