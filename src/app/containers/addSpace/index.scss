@@ -1,0 +1,39 @@
+.wrap-add-space{
+
+    position: relative;
+    width: 460px;
+    height: 600px;
+    left: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: $color-white;
+
+    box-shadow: 0px 2px 7px rgba(1, 1, 51, 0.06);
+    border-radius: 8px;
+
+}
+
+
+.mask{
+  background: rgba(0,0,0,0.4) !important;
+  z-index: 10;
+  height: 100vh;
+  position: fixed;
+  width: 100vw;
+}
+
+.close {
+    color: rgba(229, 223, 229, 0.3);
+    width: 20px;
+    position: absolute;
+    top: 50px;
+    left: 380px;
+    text-align: center;
+    z-index: 2;
+}
+
+.close-color{
+  color: rgba(2, 2, 82, 0.12);
+
+}

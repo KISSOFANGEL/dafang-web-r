@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
 class space extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeSpace: React.db.ls.get("activeSpace")
+            // activeSpace: React.db.ls.get("activeSpace")
+            activeSpace: { space: React.$store.getState().space.activedSpace}
         }
     }
     componentDidMount() {
@@ -14,6 +16,17 @@ class space extends Component {
         React.db.ls.set("activeSpace", item)
         this.setState({ activeSpace: item })
     }
+
+    loginOut = () => {
+        React.db.ls.remove("activeSpace")
+        React.db.ls.remove("userToken")
+        this.props.history.push("/login");
+    }
+
+    createSpace = () => {
+        React.$store.dispatch(React.$actions.setMask("change"))
+    }
+
     render() {
         const { spaces } = this.props
         const { activeSpace } = this.state
@@ -35,13 +48,13 @@ class space extends Component {
                         }
                     </div>
                     <div className="create">
-                        <div className="create-space">创建团队空间</div>
+                        <div className="create-space cursor" onClick={this.createSpace}>创建团队空间</div>
                         <div className="line"></div>
                     </div>
                     <div className="setting">
                         <div className="set">设置</div>
                         <div className="set">帮助</div>
-                        <div className="set logoout">退出登录</div>
+                        <div className="set logoout cursor" onClick={this.loginOut}>退出登录</div>
                     </div>
                 </div>
             </>
@@ -49,4 +62,4 @@ class space extends Component {
     }
 }
 
-export default space;
+export default withRouter(space);
