@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './dropdown.scss'
 import Dropdownmenu from './dropdownmenu.js'
+import OutsideClickHandler from 'react-outside-click-handler';
+
 export default class dropdown extends Component {
     constructor(props) {
         super(props)
@@ -15,11 +17,14 @@ export default class dropdown extends Component {
         }
 
     }
+    clickOutside = () => {
+        if (!this.props.noclosebyoutside) this.triggerMenu()
+    }
     triggerMenu = () => {
         this.setState({ innerVisible: !this.state.innerVisible })
         setTimeout(() => {
             if (this.state.innerVisible) {
-                this.setState({ style: { left: this.triggerRef.current.clientWidth / 2 - this.menuRef.current.clientWidth / 2+'px' } })
+                this.setState({ style: { left: this.triggerRef.current.clientWidth / 2 - this.menuRef.current.clientWidth / 2 + 'px' } })
                 console.log(this.state.style)
             }
         }, 0);
@@ -31,9 +36,13 @@ export default class dropdown extends Component {
             <div className="component-dropdown">
                 <div onClick={this.handleClick} className={`dropdown ${positioning ? 'dropdown--positioning' : 'dropdown--non-positioning'}`}>
                     <div className="default" onClick={this.triggerMenu} ref={this.triggerRef} >{trigger}</div>
-                    {innerVisible && <div className="dropdownmenu" ref={this.menuRef} style={this.state.style}>
-                        <Dropdownmenu menu={dropdownmenu}> </Dropdownmenu>
-                    </div>}
+                    {innerVisible &&
+                        <OutsideClickHandler onOutsideClick={this.clickOutside}>
+                            <div className="dropdownmenu" ref={this.menuRef} style={this.state.style}>
+                                <Dropdownmenu menu={dropdownmenu}> </Dropdownmenu>
+                            </div>
+                        </OutsideClickHandler>
+                    }
                 </div>
             </div>
         )

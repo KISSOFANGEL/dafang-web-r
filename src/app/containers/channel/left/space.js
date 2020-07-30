@@ -6,7 +6,7 @@ class space extends Component {
         super(props)
         this.state = {
             // activeSpace: React.db.ls.get("activeSpace")
-            activeSpace: { space: React.$store.getState().space.activedSpace}
+            activeSpace: { space: React.$store.getState().space.activedSpace }
         }
     }
     componentDidMount() {

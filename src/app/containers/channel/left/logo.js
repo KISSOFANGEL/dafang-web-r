@@ -27,7 +27,6 @@ class Logo extends React.Component {
         return (
             <>
                 <Dropdown trigger={
-
                     <div className="wrap-logo">
                         <img className="avator" src={require('@/static/logo.png')} alt="logo" />
                         <div className="userName">渣渣辉</div>
