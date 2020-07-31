@@ -1,5 +1,5 @@
 .wrap-add-space {
-  // @include flex(column, center, center);
+  @include flex(column, flex-start, center);
   width: 28.75rem;
   height: 37.5rem;
   background: $color-white;
@@ -7,8 +7,11 @@
   border-radius: 8px;
 
   &-header {
+    width: 100%;
     @include flex(row, flex-end, center);
-    padding: 2.5625rem 2.5625rem 0 0;
     color: $color-gray4;
+    i{
+      margin: 2.5625rem 2.5625rem 0 0;
+    }
   }
 }

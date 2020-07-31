@@ -20,8 +20,8 @@ export default class AddSpaceStep2 extends Component{
     render(){
         const { spaceName, placeholder} = this.state
         return(
-            <div >
-                <input type='text' name='spaceName' value={spaceName} className='input-space-name' autoFocus placeholder={placeholder} onChange={this.spaceNameChange} autoComplete="off"  ></input>
+            <div  className='wrap-add-space-step2'>
+                <input type='text' name='spaceName' className='input-space-name' value={spaceName}  autoFocus placeholder={placeholder} onChange={this.spaceNameChange} autoComplete="off"  ></input>
                 {spaceName &&
                     <div className="next pointer" onClick={e => { this.props.nextStep({ spaceName }) }}>
                         <div className="iconfont iconarrow_right"></div>

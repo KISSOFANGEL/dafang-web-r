@@ -10,8 +10,8 @@ class space extends Component {
 
         }
     }
-    
-   
+
+
     setActiveSpace = (item) => {
         React.db.ls.set("activeSpace", item)
         this.setState({ activeSpace: item })
@@ -23,15 +23,7 @@ class space extends Component {
         this.props.history.push("/login");
     }
 
-    createSpace = () => {
-        // console.log('space');
-        
-        // this.setState({
-        //     modalVisible: true
-        // })
-        this.props.togglemodalVisible()
-        // React.$store.dispatch(React.$actions.setMask("change"))
-    }
+
 
     render() {
         const { spaces } = this.props
@@ -54,7 +46,7 @@ class space extends Component {
                         }
                     </div>
                     <div className="create">
-                        <div className="create-space cursor" onClick={this.createSpace}>创建团队空间</div>
+                        <div className="create-space cursor" onClick={this.props.togglemodalVisible}>创建团队空间</div>
                         <div className="line"></div>
                     </div>
                     <div className="setting">
@@ -63,7 +55,7 @@ class space extends Component {
                         <div className="set logoout cursor" onClick={this.loginOut}>退出登录</div>
                     </div>
                 </div>
-               
+
             </>
         );
     }

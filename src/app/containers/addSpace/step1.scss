@@ -1,19 +1,20 @@
-.wrap-add-space-step1{
-    @include flex(column,center,center);
+.wrap-add-space-step1 {
+    @include flex(column, center, center);
 
-    &-title{
+    &-title {
         font-weight: 500;
         font-size: 2.25rem;
         color: $color-gray9;
         margin-top: 8.9375rem;
     }
-    &-desc{
+
+    &-desc {
         font-size: 1.25rem;
         color: $color-gray6;
         margin-top: 1rem;
     }
-}
-.dafang-button{
-    margin-top: 11.5rem;
-}
 
+    .dafang-button {
+        margin-top: 11.5rem;
+    }
+}

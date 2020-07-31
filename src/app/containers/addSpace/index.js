@@ -9,7 +9,7 @@ export default class index extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            curStep: 1,
+            curStep: 3,
             spaceName: '',
             checked: 0
 
@@ -31,16 +31,14 @@ export default class index extends Component {
         const { curStep, spaceName, checked } = this.state
         return (
             <div className='wrap-add-space'>
-                <div className="wrap-add-space-header">
-                    <i className={`iconfont iconclose pointer ${checked === 1 ? 'close-color' : ''}`} onClick={this.props.changeMask}></i>
-                </div>
+               {curStep !== 3 && <div className="wrap-add-space-header">
+                    <i className={`iconfont iconclose pointer `} onClick={this.props.changeMask}></i>
+                </div>}
                 {curStep === 1 &&
                     <AddSpaceStep1 nextStep={v => { this.next(2, v) }}></AddSpaceStep1>
-
                 }
                 {curStep === 2 &&
                     <AddSpaceStep2 nextStep={v => { this.next(3, v) }}></AddSpaceStep2>
-
                 }
 
                 {curStep === 3 &&

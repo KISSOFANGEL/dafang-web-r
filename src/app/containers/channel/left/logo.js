@@ -57,7 +57,7 @@ class Logo extends React.Component {
                     hide={this.hide}
                     onOK={this.ok}
                     onCancel={this.cancel}
-                    title="温馨提示">
+                    >
                     <AddSpace></AddSpace>
                 </Modal>
             </>
