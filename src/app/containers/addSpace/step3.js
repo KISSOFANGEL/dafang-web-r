@@ -20,10 +20,8 @@ class AddSpaceStep3 extends Component {
     }
     createSpace = async (spaceName_) => {
         let params = { name: spaceName_, type: Number(1) }
-        let res = await React.$request.post(`/dafang/space/`, params)
-        if (res.code === 1) {
-            React.$store.dispatch(React.$actions.setMask("change"))
-        }
+        await React.$request.post(`/dafang/space/`, params)
+        this.props.parent.toggleVisible()
     }
     render() {
         const { selectMsg, url, curLogo, backgroundColors } = this.state
@@ -32,14 +30,15 @@ class AddSpaceStep3 extends Component {
         return (
             <div className='wrap-add-space-step3'>
 
-                <div style={{ background: backgroundColors[curLogo] }} className={`wrap-add-space-step3-header ${curLogo === 1 ? 'white-theme' : null}`}>
+                <div key="11" style={{ background: backgroundColors[curLogo] }} className={`wrap-add-space-step3-header ${curLogo === 1 ? 'white-theme' : null}`}>
                     <div className="wrap-add-space-header">
-                        <i className={`iconfont iconclose pointer `} onClick={this.props.changeMask}></i>
+                        <i className={`iconfont iconclose pointer`} onClick={this.props.parent.toggleVisible}></i>
                     </div>
                     <p className={`p-space-name `} >{spaceName.spaceName || '次世代开发团队'}</p>
                     <p className={`p-space-msg `}>{selectMsg}</p>
                 </div>
-                <div className="wrap-add-space-step3-foot">
+
+                <div key="22" className="wrap-add-space-step3-foot">
                     <div className="space-logos">
                         {
                             backgroundColors.map((item, index) => {

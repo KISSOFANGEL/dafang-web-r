@@ -40,7 +40,7 @@ export default class Channels extends React.Component{
                     <div className="cards"><Main /></div>
                 </div>
                 { mask &&
-                    <AddSpace changeMask={e => { this.changeMask(e) }}></AddSpace>
+                    <AddSpace changeMask={e => { this.changeMask(e) }} parent={this}  ></AddSpace>
                 }
                    
                

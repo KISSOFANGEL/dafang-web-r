@@ -51,14 +51,14 @@ class Logo extends React.Component {
                         <div className="iconfont iconheader_flash"></div>
                     </div>
                 } dropdownmenu={
-                    <Space spaces={spaces} togglemodalVisible={this.togglemodalVisible} />
+                    <Space spaces={spaces} togglemodalVisible={this.togglemodalVisible}  />
                 }></Dropdown>
                 <Modal visible={this.state.modalVisible}
                     hide={this.hide}
                     onOK={this.ok}
                     onCancel={this.cancel}
                     >
-                    <AddSpace></AddSpace>
+                    <AddSpace togglemodalVisible={this.togglemodalVisible} parent={this}></AddSpace>
                 </Modal>
             </>
         )

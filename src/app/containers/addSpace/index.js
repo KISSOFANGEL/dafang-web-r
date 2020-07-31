@@ -21,18 +21,17 @@ export default class index extends Component {
             spaceName: spaceName
         })
     }
-
-    setCheck = (e, checked) => {
-        this.setState({
-            checked: checked
-        })
+    toggleVisible = () => {
+        // eslint-disable-next-line no-unused-expressions
+        this.props.parent.togglemodalVisible()
     }
+    
     render() {
-        const { curStep, spaceName, checked } = this.state
+        const { curStep, spaceName } = this.state
         return (
             <div className='wrap-add-space'>
                {curStep !== 3 && <div className="wrap-add-space-header">
-                    <i className={`iconfont iconclose pointer `} onClick={this.props.changeMask}></i>
+                    <i className={`iconfont iconclose pointer `} onClick={this.props.togglemodalVisible}></i>
                 </div>}
                 {curStep === 1 &&
                     <AddSpaceStep1 nextStep={v => { this.next(2, v) }}></AddSpaceStep1>
