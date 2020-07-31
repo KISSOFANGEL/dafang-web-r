@@ -9,7 +9,7 @@ export default class index extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            curStep: 3,
+            curStep: 1,
             spaceName: '',
             checked: 0
 

@@ -28,8 +28,8 @@ class Modal extends Component {
                 {this.props.children && this.props.children}
                 <div className="modal-btn">
                     {/*不显示没有对应方法的按钮*/}
-                    {onCancel ? <span onClick={this.onCancel}>取消</span> : null}
-                    {onOK ? <span onClick={this.onOK}>确定</span> : null}
+                    {/* {onCancel ? <span onClick={this.onCancel}>取消</span> : null}
+                    {onOK ? <span onClick={this.onOK}>确定</span> : null} */}
                 </div>
 
 
