@@ -18,6 +18,8 @@ export default class dropdown extends Component {
 
     }
     clickOutside = () => {
+        console.log('outsizd');
+        
         if (!this.props.noclosebyoutside) this.triggerMenu()
     }
     triggerMenu = () => {
@@ -25,9 +27,14 @@ export default class dropdown extends Component {
         setTimeout(() => {
             if (this.state.innerVisible) {
                 this.setState({ style: { left: this.triggerRef.current.clientWidth / 2 - this.menuRef.current.clientWidth / 2 + 'px' } })
-                console.log(this.state.style)
             }
         }, 0);
+    }
+    menuClick = () => {
+        setTimeout(() => {
+            this.triggerMenu()
+        }, 0);
+
     }
     render() {
         const { trigger, dropdownmenu } = this.props
@@ -38,7 +45,7 @@ export default class dropdown extends Component {
                     <div className="default" onClick={this.triggerMenu} ref={this.triggerRef} >{trigger}</div>
                     {innerVisible &&
                         <OutsideClickHandler onOutsideClick={this.clickOutside}>
-                            <div className="dropdownmenu" ref={this.menuRef} style={this.state.style}>
+                            <div className="dropdownmenu" ref={this.menuRef} style={this.state.style} onClick={this.menuClick}>
                                 <Dropdownmenu menu={dropdownmenu}> </Dropdownmenu>
                             </div>
                         </OutsideClickHandler>

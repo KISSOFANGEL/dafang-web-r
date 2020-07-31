@@ -2,12 +2,30 @@ import React from 'react';
 import './logo.scss'
 import Dropdown from '&/dropdown/dropdown.js'
 import Space from './space.js'
+import Modal from '&/modal/modal.js'
+import AddSpace from '@/app/containers/addSpace'
 class Logo extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            spaces: []
+            spaces: [],
+            modalVisible: false
+
         }
+    }
+    hide = () => {
+        this.setState({
+            modalVisible: false
+        })
+    };
+    ok = () => {
+        console.log("ojbk")
+    };
+    cancel = () => {
+        console.log("cancel")
+    };
+    togglemodalVisible = () => {
+        this.setState({ modalVisible: !this.state.modalVisible })
     }
     componentDidMount() {
         this.getSpaces()
@@ -33,9 +51,15 @@ class Logo extends React.Component {
                         <div className="iconfont iconheader_flash"></div>
                     </div>
                 } dropdownmenu={
-                    <Space spaces={spaces} />
+                    <Space spaces={spaces} togglemodalVisible={this.togglemodalVisible} />
                 }></Dropdown>
-
+                <Modal visible={this.state.modalVisible}
+                    hide={this.hide}
+                    onOK={this.ok}
+                    onCancel={this.cancel}
+                    title="温馨提示">
+                    <AddSpace></AddSpace>
+                </Modal>
             </>
         )
     }

@@ -1,56 +1,19 @@
+.wrap-add-space-step1{
+    @include flex(column,center,center);
 
-.div-msg1{
-    position: absolute;
-    width: 216px;
-    height: 40px;
-    left: 122px;
-    top: 200px;
-
-    // font-family: PingFang SC;
-    // font-style: normal;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 40px;
-   
-    
-
-    color: rgba(13, 13, 61, 0.86);
-
+    &-title{
+        font-weight: 500;
+        font-size: 2.25rem;
+        color: $color-gray9;
+        margin-top: 8.9375rem;
+    }
+    &-desc{
+        font-size: 1.25rem;
+        color: $color-gray6;
+        margin-top: 1rem;
+    }
+}
+.dafang-button{
+    margin-top: 11.5rem;
 }
 
-.dev-msg2{
-    position: absolute;
-    height: 40px;
-    left: 140px;
-    top: 256px;
-
-    // font-family: PingFang SC;
-    // font-style: normal;
-    // font-weight: normal;
-    font-size: 20px;
-    line-height: 24px;
-
-    
-    text-align: center;
-
-    color: rgba(6, 6, 61, 0.3);
-}
-
-.start-button{
-    position: absolute;
-    width: 160px;
-    height: 56px;
-    left: 150px;
-    top: 464px;
-
-    background:$theme-color-lighter;
-    box-shadow: 0px 4px 12px rgba(255, 218, 26, 0.3);
-    border-radius: 20px;
-    border: thin;
-
-    // font-family: PingFang TC;
-    // font-style: normal;
-    // font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-}

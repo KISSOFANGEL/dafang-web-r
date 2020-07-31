@@ -131,3 +131,15 @@ $project-type-colors: #FF5469 #4FBE6D #67AAF6 #FA8919;
 .RichEditor-header-one{
  font-size: 1.125rem
 }
+
+.dafang-button{
+    min-width: 9.375rem;
+    height: 3.5rem;
+    background:$theme-color-lighter;
+    box-shadow: 0px 4px 12px rgba(255, 218, 26, 0.3);
+    border-radius: 20px;
+    border: none;
+    color: $color-gray9;
+    font-size: 16px;
+    line-height: 24px;
+}

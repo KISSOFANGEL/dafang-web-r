@@ -11,7 +11,6 @@ class Modal extends Component {
         this.props.onCancel();
         this.props.hide();
     };
-
     render() {
         const { hide, visible, style, className, title, onOK, onCancel } = this.props;
         //合并style
@@ -21,7 +20,7 @@ class Modal extends Component {
         return (
             <div
                 style={newStyle}
-                className={`modal-content modal-content-${className}`}>
+                className={`modal-content modal-content-${className}`} >
                 <h4 className="clearfix">
                     {title}
                     <b className="close " onClick={hide}>关闭</b>
