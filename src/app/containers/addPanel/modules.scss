@@ -1,0 +1,9 @@
+.module-desc{
+    color: rgba(9, 9, 61, 0.45);
+    margin-bottom: 32px;
+    margin-top: 64px;
+}
+
+.images-div{
+ @include flex(row);
+}

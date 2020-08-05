@@ -7,7 +7,8 @@ class Navi extends Component {
         this.state = {
             curChannelId: -1,
             panels: [],
-            activedPanel: 0
+            activedPanel: 0,
+            addPanel: false
         }
     }
     componentDidMount() {
@@ -24,8 +25,15 @@ class Navi extends Component {
     setActivedPanel = (index) => {
         this.setState({ activedPanel: index })
     }
+
+    changeAddPanel = () => {
+        this.setState({ addPanel: !this.state.addPanel })
+        // eslint-disable-next-line no-unused-expressions
+        this.props.changeAddPanel
+    }
+
     render() {
-        const { panels, activedPanel } = this.state
+        const { panels, activedPanel, addPanel} = this.state
         return (
             <div className="wrap-navigator">
                 <div className="left">
@@ -34,7 +42,10 @@ class Navi extends Component {
                             <div className={`cursor item ${index === activedPanel && 'active'}`} key={index} onClick={e => this.setActivedPanel(index)}>{panel.name}</div>
                         )
                     }
-                    <div className="iconfont iconaddboard"></div>
+                    <div className="add-panel-div" style={{ display: addPanel ? 'block' : 'none' }} key='add-panel' > 
+                        <input className="add-panel-input" placeholder="未命名面板"></input>
+                    </div>
+                    <div className="iconfont iconaddboard pointer" onClick={(e) => this.changeAddPanel(e)}></div>
                 </div>
                 <div className="wrap-navigator-right">
                     <div className="iconfont iconchannel_search"></div>
@@ -43,7 +54,7 @@ class Navi extends Component {
                     <div className="iconfont iconGroup597"></div>
                     <div className="iconfont iconchannel_setting"></div>
                     <div className="add">
-                        <div className="iconfont iconaddboard"></div>
+                        <div className="iconfont iconaddboard " ></div>
                     </div>
                 </div>
             </div>
