@@ -22,7 +22,6 @@ export default class index extends Component {
         })
     }
     toggleVisible = () => {
-        // eslint-disable-next-line no-unused-expressions
         this.props.parent.togglemodalVisible()
     }
     
