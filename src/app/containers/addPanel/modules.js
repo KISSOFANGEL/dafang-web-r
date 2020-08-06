@@ -12,15 +12,15 @@ export default class Modules extends Component{
     render(){
         const { imgParams } = this.state
        return(
-           <div>
-               <div className="module-desc">{imgParams.name}</div >
+           <>
+               <div key={imgParams.name}  className="module-desc ">{imgParams.name}</div >
 
-               <div className="images-div">
+               <div key={imgParams.name+ "s"} className="images-div">
                    <Module imgParams={imgParams} ></Module>
 
                </div>
 
-           </div>
+           </>
        )
     }
 }

@@ -7,7 +7,6 @@ class AddSpaceStep3 extends Component {
         super(props)
         this.state = {
             selectMsg: '为团队选择一个标识',
-            url: 'http://localhost:3000',
             curLogo: 0,
             backgroundColors: ["#481A49", "#F1F1E7", "#041177", "#EB3458", "#2A166B"]
         }
@@ -24,7 +23,7 @@ class AddSpaceStep3 extends Component {
         this.props.parent.toggleVisible()
     }
     render() {
-        const { selectMsg, url, curLogo, backgroundColors } = this.state
+        const { selectMsg, curLogo, backgroundColors } = this.state
         const { spaceName } = this.props;
  
         return (
@@ -49,7 +48,6 @@ class AddSpaceStep3 extends Component {
                             })
                         }
                     </div>
-                    {/* <img className={`check ${divLeft}`} src={require('@/static/add-space/check.png')} alt="选择团队标识一"></img> */}
 
                     <button className='dafang-button' onClick={() => this.createSpace(spaceName.spaceName)} >
                         <p>完成创建</p>

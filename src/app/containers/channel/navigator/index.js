@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 class Navi extends Component {
     constructor(props) {
         super(props)
+        // this.myRef = React.createRef()
         this.state = {
             curChannelId: -1,
             panels: [],
@@ -13,6 +14,7 @@ class Navi extends Component {
     }
     componentDidMount() {
         React.$store.subscribe(this.handleChange)
+        
     }
     handleChange = async () => {
         let _curChannel = React.$store.getState().channel.activedChannel
@@ -28,10 +30,21 @@ class Navi extends Component {
 
     changeAddPanel = () => {
         this.setState({ addPanel: !this.state.addPanel })
-        // eslint-disable-next-line no-unused-expressions
-        this.props.changeAddPanel
+        this.props.parent.changeAddPanel()
+    
     }
-
+    creatPanel = async (panelName_,order) => {
+        let params = { name: panelName_, type: Number(1), order: order }
+        let _curChannel = React.$store.getState().channel.activedChannel
+        await React.$request.post(`/dafang/panel/create/` + _curChannel.channel.id, params)
+        
+    }
+    handleEnterKey = (e) => {
+        if (e.nativeEvent.keyCode === 13) { //e.nativeEvent获取原生的事件对像
+            this.creatPanel(e.target.value, this.state.panels.length)
+            this.changeAddPanel()
+        }
+    }
     render() {
         const { panels, activedPanel, addPanel} = this.state
         return (
@@ -43,7 +56,7 @@ class Navi extends Component {
                         )
                     }
                     <div className="add-panel-div" style={{ display: addPanel ? 'block' : 'none' }} key='add-panel' > 
-                        <input className="add-panel-input" placeholder="未命名面板"></input>
+                        <input type="text"  className="add-panel-input" ref={this.myRef} placeholder="未命名面板" onKeyPress={this.handleEnterKey}></input>
                     </div>
                     <div className="iconfont iconaddboard pointer" onClick={(e) => this.changeAddPanel(e)}></div>
                 </div>

@@ -13,7 +13,9 @@ export default class Main extends Component {
       curModuleId: ''
     }
   }
+
   componentDidMount() {
+    this.getModules()
     React.$store.subscribe(this.getModules)
   }
   getModules = async () => {
