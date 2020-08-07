@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './index.scss';
 import CreateModulePop from './createModule'
 import CardOverview from './cardOverview.js'
+import DefalutPanel from '../../addPanel/index'
 export default class Main extends Component {
   constructor(props) {
     super(props)
@@ -49,6 +50,9 @@ export default class Main extends Component {
       <div className="wrap-main" onDoubleClick={this.dbclick} onClick={this.resetPop}>
         {modules.map((m, i) =>
           <CardOverview module={m} key={i} getModules = {()=>{this.getModules()}}/>)
+        }
+        {modules.length === 0 &&
+          <DefalutPanel />
         }
         {clientX > 0 && clientY > 0 && <div className="pop" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }} onMouseEnter={() => this.activeModule(true)} onMouseLeave={() => this.activeModule(false)} >
           <CreateModulePop confirm={e => this.createConfirm(e)} />

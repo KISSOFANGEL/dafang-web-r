@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 class Navi extends Component {
     constructor(props) {
         super(props)
-        // this.myRef = React.createRef()
         this.state = {
             curChannelId: -1,
             panels: [],
             activedPanel: 0,
-            addPanel: false
+            addPanel: false,
+            panelName:''
         }
     }
     componentDidMount() {
@@ -33,20 +33,41 @@ class Navi extends Component {
         this.props.parent.changeAddPanel()
     
     }
-    creatPanel = async (panelName_,order) => {
+    createPanel =  (panelName_,order) => {
         let params = { name: panelName_, type: Number(1), order: order }
         let _curChannel = React.$store.getState().channel.activedChannel
-        await React.$request.post(`/dafang/panel/create/` + _curChannel.channel.id, params)
+        let res =  React.$request.post(`/dafang/panel/create/` + _curChannel.channel.id, params)
         
+        return res
     }
-    handleEnterKey = (e) => {
+    getPanel =  (panelId) => {
+        let res =  React.$request.get(`/dafang/panel/` + panelId)
+      
+        return res
+    }
+
+    changePanelName(e){
+        this.setState({ panelName: e.target.value })
+    }
+
+    handleEnterKey = async (e) => {
+      
         if (e.nativeEvent.keyCode === 13) { //e.nativeEvent获取原生的事件对像
-            this.creatPanel(e.target.value, this.state.panels.length)
+            let res = await this.createPanel(e.target.value, this.state.panels.length)
+           
+            let panelData = await this.getPanel(res.data)
+           
+            
             this.changeAddPanel()
+            let panelList = this.state.panels
+            panelList.push(panelData.data)
+            this.setState({ panels: panelList })
+            this.setActivedPanel(panelList.length - 1)
+            this.setState({ panelName: '' })
         }
     }
     render() {
-        const { panels, activedPanel, addPanel} = this.state
+        const { panels, activedPanel, addPanel, panelName} = this.state
         return (
             <div className="wrap-navigator">
                 <div className="left">
@@ -56,7 +77,7 @@ class Navi extends Component {
                         )
                     }
                     <div className="add-panel-div" style={{ display: addPanel ? 'block' : 'none' }} key='add-panel' > 
-                        <input type="text"  className="add-panel-input" ref={this.myRef} placeholder="未命名面板" onKeyPress={this.handleEnterKey}></input>
+                        <input type="text" className="add-panel-input" name="panelName" value={panelName} autoFocus autoComplete="off" placeholder="未命名面板" onChange={(e) => this.changePanelName(e)} onKeyPress={(e) => this.handleEnterKey(e)}></input>
                     </div>
                     <div className="iconfont iconaddboard pointer" onClick={(e) => this.changeAddPanel(e)}></div>
                 </div>
