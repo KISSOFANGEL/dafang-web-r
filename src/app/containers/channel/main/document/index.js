@@ -2,21 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Dropdown } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import './index.scss';
-
-const menu = (
-  <Menu>
-    <Menu.Item key="0" disabled>
-      文档
-    </Menu.Item>
-    <Menu.Item key="1">
-      网页书签
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="3">
-      上传
-    </Menu.Item>
-  </Menu>
-);
+import WebBookmark from './modal/webBookmark'
 
 export default class index extends Component{
     constructor(props){
@@ -25,7 +11,30 @@ export default class index extends Component{
         }
     }
 
+    onRef = (ref) => {
+        this.child = ref
+    }
+
+    handleMenuClick = e => {
+      console.log('click ', e);
+      this.child.showModal();
+    }
+
     render(){
+        const menu = (
+          <Menu onClick={this.handleMenuClick}>
+            <Menu.Item key="0" disabled>
+              文档
+            </Menu.Item>
+            <Menu.Item key="1">
+              网页书签
+            </Menu.Item>
+            <Menu.Divider />
+            <Menu.Item key="3">
+              上传
+            </Menu.Item>
+          </Menu>
+        );
         return(
             <div className="document-wrap">
               <Dropdown placement="bottomCenter" overlay={menu}>
@@ -41,6 +50,7 @@ export default class index extends Component{
                   </div>
                 </div>
               }
+              <WebBookmark onRef={this.onRef}></WebBookmark>
             </div>
         )
     }

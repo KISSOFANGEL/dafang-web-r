@@ -1,0 +1,19 @@
+.web-bookmark-modal-wrap {
+  .ant-modal {
+    top: 20%;
+    .ant-modal-header {
+      display: none;
+    }
+    .input-wrap {
+      .input {
+        width: 80%;
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        border: none;
+      }
+    }
+  }
+}
