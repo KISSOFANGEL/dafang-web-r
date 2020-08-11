@@ -1,18 +1,28 @@
 .module-div{
     display: block;
+    width: 152px;
+    height: 154px;
+    margin: 0;
+    text-align: center;
+    border-radius: 12px;
+    &:hover{
+        background: #EDEDF3;
+    }
+
+    .module-img{
+        border-radius: 6px;
+        &:hover{
+            background: #EDEDF3;
+        }
+    }
+    
+    .module-name{
+        font-weight: 600;
+        margin-top: 16px;
+        color:$color-gray8;
+    }
 }
 
     
-.module-img{
-    background: #EDEDF3;
-    border-radius: 6px;
-    margin-right: 56px;
-}
 
-.module-name{
-    text-align: center;
-    font-weight: 600;
-    margin-right: 56px;
-    margin-top: 16px;
-    color: rgba(11, 11, 61, 0.64);
-}
+

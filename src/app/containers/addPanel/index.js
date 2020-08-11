@@ -25,7 +25,7 @@ export default class index extends Component{
             otherImgParams: {
                 'name': '其他类型面板','width': '120px', 'height': '90px' ,
                 'modules':[
-                    { 'name': 'whiteborad', 'imgAddr': require('@/static/add-panel/whiteboard.png'), 'imgAddr2': require('@/static/add-panel/whiteboard2.png') },
+                    { 'name': 'whiteboard', 'imgAddr': require('@/static/add-panel/whiteboard.png'), 'imgAddr2': require('@/static/add-panel/whiteboard2.png') },
                     { 'name': 'showcase', 'imgAddr': require('@/static/add-panel/showcase.png'), 'imgAddr2': require('@/static/add-panel/showcase2.png')}
             ]}
         }
