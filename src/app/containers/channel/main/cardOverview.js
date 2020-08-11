@@ -4,6 +4,7 @@ import './cardOverview.scss'
 import Toolbar from './toolbar'
 import OutsideClickHandler from 'react-outside-click-handler';
 import RightClickMenu from './rightClickMenu'
+import Document from './document'
 class Channels extends React.Component {
     constructor(props) {
         super(props)
@@ -115,6 +116,9 @@ class Channels extends React.Component {
                                     <i className="iconfont iconrichtext_empty"></i>
                                     <div className="desc">双击输入文本或插入图片</div>
                                 </div>
+                            }
+                            {module.type === 2 &&
+                                <Document></Document>
                             }
                         </div>}
 

@@ -23,6 +23,13 @@ export default class Main extends Component {
     const activedPanel = React.$store.getState().panel.activedPanel
     if (activedPanel && activedPanel.id) {
       let res = await React.$request.get(`/dafang/module/panel/${activedPanel.id}`)
+
+      // 调试代码：插入文件数据
+      res.data.unshift({
+        id: 'f5582d41a7be4cd980c47cd076162123',
+        name: '文件模块',
+        type: 2
+      })
       this.setState({ modules: res.data })
     }
   }
