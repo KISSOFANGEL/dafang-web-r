@@ -17,11 +17,11 @@
             color: $color-gray9;
         }
     }
-
-    .iconfont {
-        font-size: 1rem;
-        color: $color-gray10;
-    }
+    
+    // .iconfont {
+    //     font-size: 1rem;
+    //     color: $color-gray10;
+    // }
 
     &-right {
         color: $color-gray8;
@@ -48,7 +48,17 @@
             font-size: .9375rem;
             color: $color-gray10;
         }
+        
     }
+
+    
+}
+.right-click-menu {
+        position: absolute;
+        .item{
+            color: $color-white;
+            font-size: 12px;
+        }
 }
 .add-panel-div{
     display: none;
