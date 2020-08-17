@@ -24,16 +24,16 @@ export default class dropdown extends Component {
     }
     triggerMenu = () => {
         this.setState({ innerVisible: !this.state.innerVisible })
-        setTimeout(() => {
-            if (this.state.innerVisible) {
+        // setTimeout(() => {
+            if (this.state.innerVisible && this.triggerRef.current) {
                 this.setState({ style: { left: this.triggerRef.current.clientWidth / 2 - this.menuRef.current.clientWidth / 2 + 'px' } })
             }
-        }, 0);
+        // }, 0);
     }
     menuClick = () => {
-        setTimeout(() => {
+        // setTimeout(() => {
             this.triggerMenu()
-        }, 0);
+        // }, 0);
 
     }
     render() {
