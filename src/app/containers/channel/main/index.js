@@ -11,7 +11,8 @@ export default class Main extends Component {
       clientY: 0,
       showpre: false,
       modules: [],
-      curModuleId: ''
+      curModuleId: '',
+      activedPanel:false
     }
   }
 
@@ -24,6 +25,7 @@ export default class Main extends Component {
     if (activedPanel && activedPanel.id) {
       let res = await React.$request.get(`/dafang/module/panel/${activedPanel.id}`)
       this.setState({ modules: res.data })
+      this.setState({ activedPanel: true})
     }
   }
   dbclick = (e) => {
@@ -45,13 +47,13 @@ export default class Main extends Component {
     await this.getModules()
   }
   render() {
-    let { clientX, clientY, showpre, modules } = this.state
+    let { clientX, clientY, showpre, modules, activedPanel } = this.state
     return (
       <div className="wrap-main" onDoubleClick={this.dbclick} onClick={this.resetPop}>
         {modules.map((m, i) =>
           <CardOverview module={m} key={i} getModules = {()=>{this.getModules()}}/>)
         }
-        {modules.length === 0 &&
+        {modules.length === 0 && activedPanel &&
           <DefalutPanel />
         }
         {clientX > 0 && clientY > 0 && <div className="pop" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }} onMouseEnter={() => this.activeModule(true)} onMouseLeave={() => this.activeModule(false)} >

@@ -116,14 +116,19 @@ class Navi extends Component {
                             </div>
                         )
                     }
-                    <div className="add-panel-div" style={{ display: addPanel ? 'block' : 'none' }} key='add-panel' > 
-                        <input type="text" className="add-panel-input" name="panelName" value={panelName} autoFocus autoComplete="off" placeholder="未命名面板" onChange={(e) => this.changePanelName(e)} onKeyPress={(e) => this.handleEnterKey(e)}></input>
-                    </div>
-                    <div className="iconfont iconaddboard pointer" onClick={(e) => this.changeAddPanel(e)}></div>
-                    <div className="right-click-menu" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }}>
-                        {<RightClickMenu show={showRightclickMenu} rcBack={e => this.rcBack(e)} toggleShow={() => { this.toggleShowRightClickMenu() }} ></RightClickMenu>}
-                    </div>
-
+                    {panels && panels.length > 0 && 
+                    <>
+                        <div className="add-panel-div" style={{ display: addPanel ? 'block' : 'none' }} key='add-panel' >
+                            <input type="text" className="add-panel-input" name="panelName" value={panelName} autoFocus autoComplete="off" placeholder="未命名面板" onChange={(e) => this.changePanelName(e)} onKeyPress={(e) => this.handleEnterKey(e)}></input>
+                        </div>
+                        <div className="iconfont iconaddboard pointer" onClick={(e) => this.changeAddPanel(e)}></div>
+                        <div className="right-click-menu" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }}>
+                            {<RightClickMenu show={showRightclickMenu} rcBack={e => this.rcBack(e)} toggleShow={() => { this.toggleShowRightClickMenu() }} ></RightClickMenu>}
+                        </div>
+                    </>
+                    }
+                   
+                   
                 </div>
                 <div className="wrap-navigator-right">
                     <div className="iconfont iconchannel_search"></div>

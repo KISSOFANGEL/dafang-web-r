@@ -26,9 +26,12 @@ class Channels extends React.Component {
         }
     }
     setActiveChannel = async (channel) => {
-        let res = await React.$request.get(`/dafang/channel/info/${channel.id}`)
-        this.setState({ activedChannelInfo: res.data })
-        React.$store.dispatch(React.$actions.setActivedChannel(res.data))
+        if (channel ){
+            let res = await React.$request.get(`/dafang/channel/info/${channel.id}`)
+            this.setState({ activedChannelInfo: res.data })
+            React.$store.dispatch(React.$actions.setActivedChannel(res.data))
+        }
+       
     }
     render() {
         const { channels, activedChannelInfo, channel } = this.state
