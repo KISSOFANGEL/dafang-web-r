@@ -19,9 +19,14 @@ class Navi extends Component {
         }
     }
     componentDidMount() {
-        React.$store.subscribe(this.handleChange)
+        this.unsubscribe = React.$store.subscribe(this.handleChange)
         
     }
+
+    componentWillUnmount(){
+        this.unsubscribe()
+    }
+
     handleChange = async () => {
         let _curChannel = React.$store.getState().channel.activedChannel
         if (_curChannel && this.state.curChannelId !== _curChannel.channel.id) {
@@ -35,8 +40,9 @@ class Navi extends Component {
     }
 
     changeAddPanel = () => {
-        this.setState({ addPanel: !this.state.addPanel })
-        this.props.parent.changeAddPanel()
+        let addPanel = this.state.addPanel;
+        this.setState({ addPanel: !addPanel })
+        React.$store.dispatch(React.$actions.setAddPanel(!addPanel))
     
     }
     createPanel =  (panelName_,order) => {

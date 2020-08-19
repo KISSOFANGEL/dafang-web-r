@@ -23,8 +23,15 @@ function panel(state = 0, action) {
     }
 }
 
+function addPanel(state = 0, action) {
+    switch (action.type) {
+        case types.SET_ADD_PANEL:
+            return action.data
+        default: return state
+    }
+}
 
 const Reducer = combineReducers({
-    channel, space, panel
+    channel, space, panel, addPanel
 })
 export default Reducer

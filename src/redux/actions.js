@@ -18,4 +18,9 @@ _actions.setActivedPanel= (panel) => ({
     data: { 'activedPanel': panel }
 })
 
+// Add Panel
+_actions.setAddPanel = (addPanel) => ({
+    type: types.SET_ADD_PANEL,
+    data: { 'addPanel': addPanel }
+})
 export const actions = { ..._actions }

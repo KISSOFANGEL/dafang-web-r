@@ -1,8 +1,10 @@
+/* eslint-disable default-case */
 import React from 'react';
 import './channels.scss'
 import { Link } from 'react-router-dom'
 import Channel from './channelComponent'
 import { connect } from 'react-redux';
+import RightClickMenu from '../main/rightClickMenu'
 
 class Channels extends React.Component {
     constructor(props) {
@@ -10,6 +12,10 @@ class Channels extends React.Component {
         this.state = {
             channels: [],
             curSpaceId: -1,
+            clientX: 0,
+            clientY: 0,
+            showRightclickMenu: false,
+            deleteChannelOrder:-1,
             activedChannelInfo: {}
         }
     }
@@ -33,8 +39,50 @@ class Channels extends React.Component {
         }
        
     }
+    contextMenu = e => {
+        e.preventDefault();
+        e.stopPropagation()
+        let { clientX, clientY } = e
+        this.setState({ clientX, clientY })
+        this.setState({ showRightclickMenu: !this.state.showRightclickMenu })
+        this.setDeleteChannelId(e)
+    }
+    setDeleteChannelId = e => {
+        let node = e.target
+        let id = parseInt(node.id)
+        while (isNaN(id)){
+            node = node.parentElement;
+            id = parseInt(node.id)
+        }
+
+        this.setState({ deleteChannelOrder: id})
+    }
+
+    
+    toggleShowRightClickMenu = () => {
+        this.setState({
+            showRightclickMenu: false
+        })
+    }
+    // 右键菜单点击
+    rcBack = (e) => {
+        switch (e) {
+            case 'del': this.delChannel()
+        }
+
+    }
+
+    delChannel = async () => {
+
+        let channelList = this.state.channels;
+        let start = parseInt(this.state.deleteChannelOrder)
+        let delChannel = channelList.splice(start, 1)
+        let res = await React.$request.delete(`/dafang/channel/${delChannel[0].id}`)
+        this.toggleShowRightClickMenu()
+        this.setState({ channels: channelList })
+    }
     render() {
-        const { channels, activedChannelInfo, channel } = this.state
+        const { channels, activedChannelInfo, clientX, clientY, showRightclickMenu } = this.state
         return (
             <div className="wrap-cards">
                 <Link to="/channel/add">
@@ -49,11 +97,13 @@ class Channels extends React.Component {
                 {
                     activedChannelInfo.channel &&
                     channels.map((channel, index) =>
-                        <div onClick={e => this.setActiveChannel(channel)} key={index}>
+                        <div id={index} onClick={e => this.setActiveChannel(channel)} key={index} onContextMenu={(e) => this.contextMenu(e)}>
                             <Channel type={channel.id === activedChannelInfo.channel.id ? 'active' : 'normal'} channel={channel} users={channel.id === activedChannelInfo.channel.id ? activedChannelInfo.userList : []}></Channel>
                         </div>)
                 }
-
+                <div className="right-click-menu" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }}>
+                    {<RightClickMenu show={showRightclickMenu} rcBack={e => this.rcBack(e)} toggleShow={() => { this.toggleShowRightClickMenu() }} ></RightClickMenu>}
+                </div>
                 {/* <Channel type={'normal'}></Channel>
                 <Channel type={'outside'}></Channel>
                 <Channel type={'folder'}></Channel> */}
