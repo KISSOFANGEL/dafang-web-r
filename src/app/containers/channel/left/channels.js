@@ -104,13 +104,16 @@ class Channels extends React.Component {
 
                     </div>
                 </Link>
+                
                 {
                     activedChannelInfo.channel &&
                     channels.map((channel, index) =>
                         <div id={index} onClick={e => this.setActiveChannel(channel)} key={index} onContextMenu={(e) => this.contextMenu(e)}>
                             <Channel type={channel.id === activedChannelInfo.channel.id ? 'active' : 'normal'} channel={channel} users={channel.id === activedChannelInfo.channel.id ? activedChannelInfo.userList : []}></Channel>
                         </div>)
+                    
                 }
+                
                 <div className="right-click-menu" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }}>
                     {<RightClickMenu show={showRightclickMenu} rcBack={e => this.rcBack(e)} toggleShow={() => { this.toggleShowRightClickMenu() }} ></RightClickMenu>}
                 </div>
