@@ -20,15 +20,22 @@ class Channels extends React.Component {
         }
     }
     componentDidMount() {
-        React.$store.subscribe(this.getChannels)
+        this.unsubscribe = React.$store.subscribe(this.getChannels)
         // this.getChannels()
+        
     }
+
+    componentWillUnmount() {
+        this.unsubscribe()
+    }
+
     getChannels = async () => {
         let _curSpace = React.$store.getState().space
         if (_curSpace && _curSpace.activedSpace.id !== this.state.curSpaceId) {
             let res = await React.$request.get(`/dafang/channel/list/${_curSpace.activedSpace.id}`)
             this.setState({ channels: res.data.singleList, curSpaceId: _curSpace.activedSpace.id })
             this.setActiveChannel(this.state.channels[0])
+
         }
     }
     setActiveChannel = async (channel) => {
@@ -61,6 +68,7 @@ class Channels extends React.Component {
     
     toggleShowRightClickMenu = () => {
         this.setState({
+            deleteChannelOrder: -1,
             showRightclickMenu: false
         })
     }
@@ -78,8 +86,10 @@ class Channels extends React.Component {
         let start = parseInt(this.state.deleteChannelOrder)
         let delChannel = channelList.splice(start, 1)
         let res = await React.$request.delete(`/dafang/channel/${delChannel[0].id}`)
+        
         this.toggleShowRightClickMenu()
         this.setState({ channels: channelList })
+        this.setActiveChannel(this.state.channels[0])
     }
     render() {
         const { channels, activedChannelInfo, clientX, clientY, showRightclickMenu } = this.state
