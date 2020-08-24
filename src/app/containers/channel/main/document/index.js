@@ -70,7 +70,7 @@ export default class index extends Component{
                         <img className="doc-item-icon" src={require(`@/static/icon/doc/bookmark.svg`)} alt=""></img>
                         <span className="doc-item-name">{index + "-" + item.name}</span>
                         <span className="doc-writer">添加</span>
-                        <span className="doc-writer" style={{'margin-right': '12px'}}>{item.writer}</span>
+                        <span className="doc-writer" style={{'margin-right': '12px'}}>{item.crUser}</span>
                       </div>
                     })
                   }
