@@ -21,6 +21,7 @@ class AddSpaceStep3 extends Component {
         let params = { name: spaceName_, type: Number(1) }
         await React.$request.post(`/dafang/space/`, params)
         this.props.parent.toggleVisible()
+        React.$store.dispatch(React.$actions.setAddSpace(Number(1)))
     }
     render() {
         const { selectMsg, curLogo, backgroundColors } = this.state
@@ -41,7 +42,7 @@ class AddSpaceStep3 extends Component {
                     <div className="space-logos">
                         {
                             backgroundColors.map((item, index) => {
-                                return <div className="img">
+                                return <div className="img" key={index}>
                                     <img key={index} onClick={(e) => this.changeChecked(index, item)} src={require(`@/static/add-space/image${index + 1}.png`)} alt="团队标识" className={curLogo === index ? 'active' : null}></img>
                                     {curLogo === index ? <div className="mask"> <i className="iconfont iconchecked"></i></div> : null}
                                 </div>

@@ -4,17 +4,15 @@ export default class channelComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            channel: props.channel || {},
             users: props.users || []
         }
     }
     componentDidMount() {
     }
     render() {
-        const { channel } = this.state
-        const { type, users } = this.props
+        const { channel, type, users } = this.props
         const active = type === 'active' || (users && users.length > 0)
-
+        
         return (
             <div className="wrap-component-channel">
                 {

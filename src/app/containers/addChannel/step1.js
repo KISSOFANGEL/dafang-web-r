@@ -10,7 +10,8 @@ export default class addChannelS1 extends Component {
             placeholder: "给频道取个名字",
             publicChannelDesc: "空间内所有成员可查看并自由加入该频道",
             privateChannelDesc: "仅被邀请人可见",
-            isPrivate: false
+            isPrivate: false,
+            channel: { 'id': '', 'name': '', 'memberNum': ''}
         }
         this.channelNameChange = this.channelNameChange.bind(this);
     }
@@ -23,7 +24,7 @@ export default class addChannelS1 extends Component {
         this.setState({ isPrivate: v })
     }
     render() {
-        const { isPrivate, channelName, placeholder, publicChannelDesc, privateChannelDesc } = this.state
+        const { isPrivate, channelName, placeholder, publicChannelDesc, privateChannelDesc, channel } = this.state
         return (
             <div className="wrap-addchannel-step1-main">
                 <div className="input">
@@ -50,16 +51,16 @@ export default class addChannelS1 extends Component {
                             </div>
                         <div className={`channels add-channels-list`}>
                             <div className="channel">
-                                <Channel type={'active'}></Channel>
+                                <Channel type={'active'} channel={channel}></Channel>
                             </div>
                             <div className="channel">
-                                <Channel type={'active'}></Channel>
+                                <Channel type={'active'} channel={channel}></Channel>
                             </div>
                             <div className="channel">
-                                <Channel type={'active'}></Channel>
+                                <Channel type={'active'} channel={channel}></Channel>
                             </div>
                             <div className="channel">
-                                <Channel type={'active'}></Channel>
+                                <Channel type={'active'} channel={channel}></Channel>
                             </div>
 
                         </div>

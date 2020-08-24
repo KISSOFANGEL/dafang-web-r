@@ -29,16 +29,27 @@ class Logo extends React.Component {
     }
     componentDidMount() {
         this.getSpaces()
+        this.unsubscribe = React.$store.subscribe(this.getSpaces)
     }
+
+    componentWillUnmount(){
+        this.unsubscribe()
+    }
+
     getSpaces = async () => {
-        const res = await React.$request.get('/dafang/space/user')
-        this.setState({ spaces: res.data })
-        this.state.spaces.map(item => {
-            if (item.space.type === 0) {
-                React.$store.dispatch(React.$actions.setActivedSpace(item.space))
-                // React.db.ls.set("activeSpace", item)
-            }
-        })
+        let addSpace = React.$store.getState().addSpace.addSpace
+        if (addSpace !== 2){
+            const res = await React.$request.get('/dafang/space/user')
+            this.setState({ spaces: res.data })
+            this.state.spaces.map(item => {
+                if (item.space.type === 0) {
+                    React.$store.dispatch(React.$actions.setActivedSpace(item.space))
+                    // React.db.ls.set("activeSpace", item)
+                }
+            })
+
+            React.$store.dispatch(React.$actions.setAddSpace(Number(2)))
+        }
     }
     render() {
         const { spaces } = this.state

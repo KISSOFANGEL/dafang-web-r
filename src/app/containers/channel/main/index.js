@@ -11,13 +11,22 @@ export default class Main extends Component {
       clientY: 0,
       showpre: false,
       modules: [],
-      curModuleId: ''
+      curModuleId: '',
+      activedPanel:false,
+      addPanel:false
     }
   }
 
   componentDidMount() {
     this.getModules()
-    React.$store.subscribe(this.getModules)
+    this.unsubscribeGetModules = React.$store.subscribe(this.getModules)
+    this.unsubscribeGetAddPanel = React.$store.subscribe(this.getAddPanel)
+    
+  }
+
+  componentWillUnmount(){
+    this.unsubscribeGetModules()
+    this.unsubscribeGetAddPanel()
   }
   getModules = async () => {
     const activedPanel = React.$store.getState().panel.activedPanel
@@ -31,8 +40,15 @@ export default class Main extends Component {
         type: 2
       })
       this.setState({ modules: res.data })
+      this.setState({ activedPanel: true})
     }
   }
+
+  getAddPanel = () => {
+    let addPanel = React.$store.getState().addPanel.addPanel
+    this.setState({addPanel:addPanel})
+  }
+
   dbclick = (e) => {
     let { clientX, clientY } = e
     this.setState({ clientX, clientY })
@@ -52,13 +68,14 @@ export default class Main extends Component {
     await this.getModules()
   }
   render() {
-    let { clientX, clientY, showpre, modules } = this.state
+    let { clientX, clientY, modules, activedPanel, addPanel } = this.state
     return (
       <div className="wrap-main" onDoubleClick={this.dbclick} onClick={this.resetPop}>
-        {modules.map((m, i) =>
+        { !addPanel &&
+           modules.map((m, i) =>
           <CardOverview module={m} key={i} getModules = {()=>{this.getModules()}}/>)
         }
-        {modules.length === 0 &&
+        { (addPanel || (modules.length === 0 && activedPanel)) &&
           <DefalutPanel />
         }
         {clientX > 0 && clientY > 0 && <div className="pop" style={{ left: clientX + 5 + "px", top: clientY + 5 + "px" }} onMouseEnter={() => this.activeModule(true)} onMouseLeave={() => this.activeModule(false)} >

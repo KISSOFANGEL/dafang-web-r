@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import React from 'react';
 import { Editor, EditorState, convertToRaw, convertFromRaw, RichUtils } from 'draft-js';
 import './cardOverview.scss'
