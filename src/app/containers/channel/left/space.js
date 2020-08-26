@@ -26,8 +26,8 @@ class space extends Component {
     loginOut = () => {
         React.db.ls.remove("activeSpace")
         React.db.ls.remove("userToken")
-        React.$store.dispatch(React.$actions.setAddSpace(Number(1)))
         this.props.history.push("/login");
+      
     }
 
     contextMenu = e => {

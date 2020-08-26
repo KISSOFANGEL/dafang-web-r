@@ -20,6 +20,7 @@ class loginbypassword extends Component {
         let result = await React.$request.get("/dafang/user/login", { pwd: this.state.password, email: this.state.username })
         if (result.code === 1) {
             React.db.ls.set('userToken', result.data)
+            React.$store.dispatch(React.$actions.setAddSpace(Number(1)))
             this.props.history.push("/");
         }
     }
