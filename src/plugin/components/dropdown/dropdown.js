@@ -18,24 +18,29 @@ export default class dropdown extends Component {
 
     }
     clickOutside = () => {
-        console.log('outsizd');
-        
         if (!this.props.noclosebyoutside) this.triggerMenu()
     }
     triggerMenu = () => {
         this.setState({ innerVisible: !this.state.innerVisible })
-        setTimeout(() => {
+        this.intriggerMenuTimer = setTimeout(() => {
             if (this.state.innerVisible && this.triggerRef.current) {
                 this.setState({ style: { left: this.triggerRef.current.clientWidth / 2 - this.menuRef.current.clientWidth / 2 + 'px' } })
             }
         }, 0);
     }
+
+    
     menuClick = () => {
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
             this.triggerMenu()
         }, 0);
 
     }
+    componentWillUnmount(){
+        clearTimeout(this.timer)
+        clearTimeout(this.intriggerMenuTimer)
+    }
+
     render() {
         const { trigger, dropdownmenu } = this.props
         const { innerVisible, positioning } = this.state
