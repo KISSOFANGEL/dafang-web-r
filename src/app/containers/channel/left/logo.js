@@ -55,11 +55,12 @@ class Logo extends React.Component {
     }
     render() {
         const { spaces,user } = this.state
+        const imgUrl = user ? "./" + user.pic : null
         return (
             <>
                 <Dropdown trigger={
                     <div className="wrap-logo">
-                        <img className="avator" src={require('@/static/logo.png')} alt="logo" />
+                        <img className="avator" src={imgUrl ? imgUrl : require('@/static/logo.png')} alt="logo" />
                     <div className="userName">{user ? user.name : ''}</div>
                         <div className="iconfont iconheader_flash"></div>
                     </div>
