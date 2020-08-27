@@ -9,7 +9,8 @@ class Logo extends React.Component {
         super(props)
         this.state = {
             spaces: [],
-            modalVisible: false
+            modalVisible: false,
+            user:null
 
         }
     }
@@ -30,6 +31,7 @@ class Logo extends React.Component {
     componentDidMount() {
         this.getSpaces()
         this.unsubscribe = React.$store.subscribe(this.getSpaces)
+        this.setState({ user: React.db.ls.get("userToken") ? React.db.ls.get("userToken").user : null})
     }
 
     componentWillUnmount(){
@@ -52,13 +54,13 @@ class Logo extends React.Component {
         }
     }
     render() {
-        const { spaces } = this.state
+        const { spaces,user } = this.state
         return (
             <>
                 <Dropdown trigger={
                     <div className="wrap-logo">
                         <img className="avator" src={require('@/static/logo.png')} alt="logo" />
-                        <div className="userName">渣渣辉</div>
+                    <div className="userName">{user ? user.name : ''}</div>
                         <div className="iconfont iconheader_flash"></div>
                     </div>
                 } dropdownmenu={
