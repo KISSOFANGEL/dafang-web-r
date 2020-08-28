@@ -78,7 +78,7 @@ class space extends Component {
     }
 
     render() {
-        const { spaces } = this.props
+        const { spaces, userPic} = this.props
         const { activeSpace, clientX, clientY, showRightclickMenu  } = this.state
         return (
             <>
@@ -87,7 +87,7 @@ class space extends Component {
                         {
                             spaces.map((item, index) =>
                                 <div className="item cursor" key={index} onClick={() => this.setActiveSpace(item)} onContextMenu={(e) => this.contextMenu(e)}>
-                                    <img className="avator" src={require('@/static/logo.png')} alt="logo" />
+                                    <img className="avator" src={item.space.type === 0 ? (userPic ? userPic : require('@/static/logo.png')) : require(`@/static/add-space/image${item.space.pic}.png`)} alt="logo" />
                                     <div className="name">
                                         <div className="userName">{item.space.name}</div>
                                         <div className="desc">{item.space.type === 0 ? '个人空间' : item.userType === 1 ? '主理人' : '成员'}</div>

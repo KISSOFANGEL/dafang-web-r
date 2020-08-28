@@ -18,7 +18,7 @@ class AddSpaceStep3 extends Component {
         })
     }
     createSpace = async (spaceName_) => {
-        let params = { name: spaceName_, type: Number(1) }
+        let params = { name: spaceName_, type: Number(1),pic: String(this.state.curLogo + 1)}
         await React.$request.post(`/dafang/space/`, params)
         this.props.parent.toggleVisible()
         React.$store.dispatch(React.$actions.setAddSpace(Number(1)))
