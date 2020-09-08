@@ -86,7 +86,7 @@ class space extends Component {
                     <div className="items">
                         {
                             spaces.map((item, index) =>
-                                <div className="item cursor" key={index} onClick={() => this.setActiveSpace(item)} onContextMenu={(e) => this.contextMenu(e)}>
+                                <div className="item cursor" key={index} onClick={() => this.setActiveSpace(item)}>
                                     <img className="avator" src={item.space.type === 0 ? (userPic ? userPic : require('@/static/logo.png')) : require(`@/static/add-space/image${item.space.pic}.png`)} alt="logo" />
                                     <div className="name">
                                         <div className="userName">{item.space.name}</div>
